@@ -1,1 +1,164 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f7fb;
+    color:#222;
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar{
+    background:rgba(0,0,0,.85)!important;
+    backdrop-filter:blur(12px);
+}
+
+.navbar-brand{
+    font-size:1.5rem;
+}
+
+/* ---------- Hero ---------- */
+
+.hero{
+
+    min-height:100vh;
+
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hero h1{
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+.typing{
+
+    color:#FFD54F;
+
+    font-weight:600;
+
+    height:40px;
+
+}
+
+.hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+}
+
+/* ---------- Sections ---------- */
+
+section{
+
+    padding:90px 0;
+
+}
+
+section h2{
+
+    font-weight:700;
+
+    color:#1e3a8a;
+
+    margin-bottom:30px;
+
+}
+
+/* ---------- Cards ---------- */
+
+.card{
+
+    border:none;
+
+    border-radius:20px;
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+}
+
+/* ---------- Buttons ---------- */
+
+.btn{
+
+    border-radius:50px;
+
+    padding:12px 28px;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ---------- Footer ---------- */
+
+footer{
+
+    background:#0f172a;
+
+    color:white;
+
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
+
+    border-radius:20px;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:2.5rem;
+
+}
+
+}
