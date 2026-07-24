@@ -1,206 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khinil Sahu | Research Portfolio</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<title>Khinil Sahu | Research Portfolio</title>
 
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="#">Khinil Sahu</a>
+<!-- NAVBAR -->
 
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
 
-        <div class="collapse navbar-collapse" id="nav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
-                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
-                <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </div>
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="#">
+KHINIL SAHU
+</a>
+
+<button class="navbar-toggler"
+data-bs-toggle="collapse"
+data-bs-target="#menu">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+
+<li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+
+<li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+
+<li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+
+<li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+
+<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
 </nav>
 
-<!-- Hero -->
-<section class="hero text-center text-white d-flex align-items-center">
-    <div class="container">
 
-        <h5 class="text-warning">Hello, I'm</h5>
 
-        <h1 class="display-3 fw-bold">Khinil Sahu</h1>
+<!-- HERO -->
 
-        <h3 class="typing"></h3>
+<section class="hero">
 
-        <p class="lead mt-4">
-            MS by Research • IIT Bhubaneswar
-        </p>
+<div class="container">
 
-        <p>
-            Computational Mechanics • Corrosion Fatigue • Marine Structures
-        </p>
+<div class="row align-items-center">
 
-        <a href="#research" class="btn btn-warning btn-lg m-2">
-            View Research
-        </a>
+<div class="col-lg-7">
 
-        <a href="#" class="btn btn-outline-light btn-lg m-2">
-            Download CV
-        </a>
+<p class="small-heading">
+HELLO I'M
+</p>
 
-    </div>
+<h1>
+
+Khinil Sahu
+
+</h1>
+
+<h3 class="typing"></h3>
+
+<p class="hero-text">
+
+MS by Research • IIT Bhubaneswar
+
+<br><br>
+
+Interested in computational mechanics,
+corrosion fatigue,
+offshore structures,
+and molecular-level fracture.
+
+</p>
+
+<div class="mt-4">
+
+<a href="#projects" class="btn btn-warning btn-lg">
+
+View Research
+
+</a>
+
+<a href="pdf/CV.pdf"
+
+class="btn btn-outline-light btn-lg">
+
+Download CV
+
+</a>
+
+</div>
+
+<div class="social mt-5">
+
+<a href="#"><i class="bi bi-github"></i></a>
+
+<a href="#"><i class="bi bi-linkedin"></i></a>
+
+<a href="#"><i class="bi bi-envelope-fill"></i></a>
+
+<a href="#"><i class="bi bi-google"></i></a>
+
+</div>
+
+</div>
+
+<div class="col-lg-5 text-center">
+
+<img src="profile.jpg"
+
+class="profile-img">
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- About -->
-<section id="about" class="container py-5">
-    <h2 class="text-center mb-4">About Me</h2>
 
-    <p class="text-center">
-        I am an MS by Research student in Civil Engineering at IIT Bhubaneswar.
-        My research focuses on computational mechanics, corrosion fatigue,
-        fracture mechanics, finite element methods, and marine structures.
-    </p>
 
-</section>
+<section id="about">
 
-<!-- Research -->
-<section id="research" class="container py-5">
+<div class="container">
 
-<h2 class="text-center mb-5">Research Interests</h2>
+<h2>About Me</h2>
 
-<div class="row g-4">
+<p>
 
-<div class="col-md-4">
-<div class="card h-100 shadow">
-<div class="card-body text-center">
-<h4>Corrosion Fatigue</h4>
-<p>Numerical modelling and crack initiation.</p>
-</div>
-</div>
-</div>
+I am currently pursuing my MS by Research in Civil Engineering at IIT Bhubaneswar.
 
-<div class="col-md-4">
-<div class="card h-100 shadow">
-<div class="card-body text-center">
-<h4>Finite Element Method</h4>
-<p>Simulation using modern computational tools.</p>
-</div>
-</div>
-</div>
+My research focuses on corrosion fatigue, computational fracture mechanics,
 
-<div class="col-md-4">
-<div class="card h-100 shadow">
-<div class="card-body text-center">
-<h4>Marine Structures</h4>
-<p>Durability and structural integrity.</p>
-</div>
-</div>
-</div>
+finite element modelling, and offshore structures.
+
+</p>
 
 </div>
 
 </section>
 
-<!-- Projects -->
-<section id="projects" class="container py-5">
 
-<h2 class="text-center mb-5">Projects</h2>
+
+<section id="research">
+
+<div class="container">
+
+<h2>Research Interests</h2>
 
 <div class="row">
 
 <div class="col-md-4">
-<div class="card shadow">
-<div class="card-body">
-<h4>Tsunami Hazard Mapping</h4>
-<p>GIS based hazard assessment.</p>
-<button class="btn btn-primary">Read More</button>
-</div>
-</div>
-</div>
 
-<div class="col-md-4">
-<div class="card shadow">
-<div class="card-body">
-<h4>Bolt Loosening FEM</h4>
-<p>Finite element simulation.</p>
-<button class="btn btn-primary">Read More</button>
-</div>
-</div>
-</div>
+<div class="research-card">
 
-<div class="col-md-4">
-<div class="card shadow">
-<div class="card-body">
-<h4>Corrosion Fatigue</h4>
-<p>Current MS Research.</p>
-<button class="btn btn-primary">Read More</button>
-</div>
-</div>
-</div>
+<h3>Corrosion Fatigue</h3>
 
-</div>
+<p>
 
-</section>
+Understanding crack initiation and propagation under corrosive environments.
 
-<!-- Publications -->
-<section id="publications" class="container py-5">
-<h2 class="text-center">Publications</h2>
-<p class="text-center">Coming Soon</p>
-</section>
-
-<!-- Blog -->
-<section id="blog" class="container py-5">
-<h2 class="text-center">Blog</h2>
-<p class="text-center">
-I'll share research notes, tutorials, and learning resources here.
 </p>
-</section>
 
-<!-- Contact -->
-<section id="contact" class="container py-5">
+</div>
 
-<h2 class="text-center mb-4">Contact</h2>
+</div>
 
-<div class="text-center">
+<div class="col-md-4">
 
-<a class="btn btn-dark m-2">
-<i class="bi bi-github"></i> GitHub
-</a>
+<div class="research-card">
 
-<a class="btn btn-primary m-2">
-<i class="bi bi-linkedin"></i> LinkedIn
-</a>
+<h3>Offshore Structures</h3>
 
-<a class="btn btn-danger m-2">
-<i class="bi bi-envelope-fill"></i> Email
-</a>
+<p>
+
+Durability and reliability of marine infrastructure.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="research-card">
+
+<h3>Molecular-Level Fracture</h3>
+
+<p>
+
+Bridging atomistic damage mechanisms to structural behaviour.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
-<footer class="bg-dark text-white text-center p-3">
+
+
+<section id="projects">
+
+<div class="container">
+
+<h2>Featured Projects</h2>
+
+<p>Coming Soon...</p>
+
+</div>
+
+</section>
+
+
+
+<section id="publications">
+
+<div class="container">
+
+<h2>Publications</h2>
+
+<p>No publications added yet.</p>
+
+</div>
+
+</section>
+
+
+
+<section id="blog">
+
+<div class="container">
+
+<h2>Research Blog</h2>
+
+<p>Research notes and tutorials will appear here.</p>
+
+</div>
+
+</section>
+
+
+
+<section id="contact">
+
+<div class="container">
+
+<h2>Contact</h2>
+
+<p>Email : your@email.com</p>
+
+<p>Location : IIT Bhubaneswar</p>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
 © 2026 Khinil Sahu
+
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="script.js"></script>
 
 </body>
