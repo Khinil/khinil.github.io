@@ -62,107 +62,171 @@ data-bs-target="#menu">
 
 <!-- HERO -->
 
-<section class="hero">
+.hero{
 
-<div class="container">
+min-height:100vh;
 
-<div class="row align-items-center">
+display:flex;
 
-<div class="col-lg-7">
+align-items:center;
 
-<p class="small-heading">
-HELLO I'M
-</p>
+background:linear-gradient(135deg,#0f172a,#1e3a8a);
 
-<h1>
+color:white;
 
-Khinil Sahu
+padding-top:100px;
 
-</h1>
+}
 
-<h3 class="typing"></h3>
+.hero-tag{
 
-<p class="hero-text">
+display:inline-block;
 
-MS by Research • IIT Bhubaneswar
+padding:8px 18px;
 
-<br><br>
+border-radius:30px;
 
-Interested in computational mechanics,
-corrosion fatigue,
-offshore structures,
-and molecular-level fracture.
+background:rgba(255,255,255,.12);
 
-</p>
+font-size:14px;
 
-<div class="mt-4">
+letter-spacing:1px;
 
-<a href="#projects" class="btn btn-warning btn-lg">
+}
 
-View Research
+.hero h1{
 
-</a>
+font-size:4rem;
 
-<a href="pdf/CV.pdf"
+font-weight:700;
 
-class="btn btn-outline-light btn-lg">
+}
 
-Download CV
+.typing{
 
-</a>
+color:#FFD54F;
 
-</div>
+height:40px;
 
-<div class="social mt-5">
+margin:18px 0;
 
-<a href="#"><i class="bi bi-github"></i></a>
+}
 
-<a href="#"><i class="bi bi-linkedin"></i></a>
+.hero-text{
 
-<a href="#"><i class="bi bi-envelope-fill"></i></a>
+font-size:18px;
 
-<a href="#"><i class="bi bi-google"></i></a>
+line-height:1.8;
 
-</div>
+max-width:600px;
 
-</div>
+color:#dbe4f0;
 
-<div class="col-lg-5 text-center">
+}
 
-<img src="profile.jpg"
+.hero-photo{
 
-class="profile-img">
+width:260px;
 
-</div>
+height:260px;
 
-</div>
+border-radius:50%;
 
-</div>
+object-fit:cover;
 
-</section>
+border:6px solid rgba(255,255,255,.18);
 
+box-shadow:0 20px 45px rgba(0,0,0,.35);
 
+transition:.4s;
 
-<section id="about">
+}
 
-<div class="container">
+.hero-photo:hover{
 
-<h2>About Me</h2>
+transform:scale(1.05);
 
-<p>
+}
 
-I am currently pursuing my MS by Research in Civil Engineering at IIT Bhubaneswar.
+.research-tags{
 
-My research focuses on corrosion fatigue, computational fracture mechanics,
+display:flex;
 
-finite element modelling, and offshore structures.
+flex-wrap:wrap;
 
-</p>
+gap:12px;
 
-</div>
+margin-top:20px;
 
-</section>
+}
 
+.research-tags span{
+
+background:rgba(255,255,255,.12);
+
+padding:10px 18px;
+
+border-radius:30px;
+
+font-size:14px;
+
+}
+
+.social a{
+
+color:white;
+
+font-size:26px;
+
+margin-right:20px;
+
+transition:.3s;
+
+}
+
+.social a:hover{
+
+color:#FFD54F;
+
+}
+
+@media(max-width:992px){
+
+.hero{
+
+text-align:center;
+
+}
+
+.hero-text{
+
+margin:auto;
+
+}
+
+.research-tags{
+
+justify-content:center;
+
+}
+
+.hero-photo{
+
+margin-top:50px;
+
+width:220px;
+
+height:220px;
+
+}
+
+.hero h1{
+
+font-size:2.8rem;
+
+}
+
+}
 
 
 <section id="research">
