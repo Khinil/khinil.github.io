@@ -212,30 +212,14 @@ section{
 ========================================================== */
 
 .hero-photo{
-
-    width:260px;
-
-    height:260px;
-
-    border-radius:50%;
-
+    width:340px;
+    height:340px;
     object-fit:cover;
-
-    border:6px solid rgba(255,255,255,.15);
-
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
-
+    border-radius:50%;
+    border:8px solid rgba(255,255,255,.15);
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
     transition:.4s;
-
 }
-
-.hero-photo:hover{
-
-    transform:scale(1.04);
-
-}
-
-
 /* ==========================================================
    SOCIAL ICONS
 ========================================================== */
