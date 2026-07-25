@@ -1,31 +1,489 @@
-/* ====================================================== */
-/* GLOBAL STYLES */
-/* ====================================================== */
+/* ==========================================================
+   GOOGLE FONT
+========================================================== */
 
-/* ====================================================== */
-/* NAVBAR */
-/* ====================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* ====================================================== */
-/* HERO SECTION */
-/* ====================================================== */
 
-/* ====================================================== */
-/* RESEARCH CARDS */
-/* ====================================================== */
+/* ==========================================================
+   GLOBAL SETTINGS
+========================================================== */
 
-/* ====================================================== */
-/* PROJECTS */
-/* ====================================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
 
-/* ====================================================== */
-/* BLOG */
-/* ====================================================== */
+body{
 
-/* ====================================================== */
-/* FOOTER */
-/* ====================================================== */
+    font-family:'Poppins',sans-serif;
 
-/* ====================================================== */
-/* MOBILE RESPONSIVE */
-/* ====================================================== */
+    background:#f5f7fb;
+
+    color:#222;
+
+    overflow-x:hidden;
+
+    line-height:1.7;
+
+}
+
+a{
+    text-decoration:none;
+}
+
+section{
+    padding:90px 0;
+}
+
+.container{
+    max-width:1200px;
+}
+
+
+/* ==========================================================
+   NAVBAR
+========================================================== */
+
+.navbar{
+
+    background:rgba(10,18,42,.95);
+
+    backdrop-filter:blur(10px);
+
+    padding:15px 0;
+
+}
+
+.navbar-brand{
+
+    font-size:1.5rem;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.nav-link{
+
+    color:#ffffff !important;
+
+    margin-left:20px;
+
+    transition:.3s;
+
+}
+
+.nav-link:hover{
+
+    color:#ffc107 !important;
+
+}
+
+
+/* ==========================================================
+   HERO SECTION
+========================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+
+    color:white;
+
+    padding-top:100px;
+
+}
+
+.hero-tag{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.15);
+
+    font-size:14px;
+
+    letter-spacing:1px;
+
+}
+
+.hero h1{
+
+    font-size:4rem;
+
+    font-weight:700;
+
+    margin-top:20px;
+
+}
+
+.typing{
+
+    color:#FFD54F;
+
+    font-size:1.5rem;
+
+    margin:20px 0;
+
+    min-height:40px;
+
+}
+
+.hero-text{
+
+    font-size:18px;
+
+    color:#d8e1ee;
+
+    max-width:620px;
+
+}
+
+
+/* ==========================================================
+   RESEARCH TAGS
+========================================================== */
+
+.research-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:30px;
+
+}
+
+.research-tags span{
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:30px;
+
+    padding:10px 18px;
+
+    font-size:14px;
+
+}
+
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn{
+
+    border-radius:30px;
+
+    padding:12px 28px;
+
+    margin-right:12px;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+/* ==========================================================
+   PROFILE PHOTO
+========================================================== */
+
+.hero-photo{
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:6px solid rgba(255,255,255,.15);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+    transition:.4s;
+
+}
+
+.hero-photo:hover{
+
+    transform:scale(1.04);
+
+}
+
+
+/* ==========================================================
+   SOCIAL ICONS
+========================================================== */
+
+.social{
+
+    margin-top:35px;
+
+}
+
+.social a{
+
+    color:white;
+
+    font-size:28px;
+
+    margin-right:18px;
+
+    transition:.3s;
+
+}
+
+.social a:hover{
+
+    color:#FFD54F;
+
+}
+
+
+/* ==========================================================
+   SECTION TITLES
+========================================================== */
+
+section h2{
+
+    text-align:center;
+
+    font-size:2.5rem;
+
+    font-weight:700;
+
+    margin-bottom:50px;
+
+    color:#0f172a;
+
+}
+
+
+/* ==========================================================
+   ABOUT SECTION
+========================================================== */
+
+#about{
+
+    background:white;
+
+}
+
+#about p{
+
+    max-width:850px;
+
+    margin:auto;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+
+/* ==========================================================
+   RESEARCH CARDS
+========================================================== */
+
+.research-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    height:100%;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.research-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+
+}
+
+.research-card h3{
+
+    color:#0d6efd;
+
+    margin-bottom:15px;
+
+}
+
+
+/* ==========================================================
+   PROJECTS
+========================================================== */
+
+#projects{
+
+    background:#f8fafc;
+
+}
+
+
+/* ==========================================================
+   PUBLICATIONS
+========================================================== */
+
+#publications{
+
+    background:white;
+
+}
+
+
+/* ==========================================================
+   BLOG
+========================================================== */
+
+#blog{
+
+    background:#f8fafc;
+
+}
+
+
+/* ==========================================================
+   CONTACT
+========================================================== */
+
+#contact{
+
+    background:white;
+
+    text-align:center;
+
+}
+
+#contact p{
+
+    font-size:18px;
+
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+footer{
+
+    background:#0f172a;
+
+    color:white;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563eb;
+
+    border-radius:20px;
+
+}
+
+
+/* ==========================================================
+   MOBILE RESPONSIVE
+========================================================== */
+
+@media(max-width:992px){
+
+.hero{
+
+    text-align:center;
+
+}
+
+.hero h1{
+
+    font-size:2.8rem;
+
+}
+
+.hero-text{
+
+    margin:auto;
+
+}
+
+.research-tags{
+
+    justify-content:center;
+
+}
+
+.hero-photo{
+
+    width:220px;
+
+    height:220px;
+
+    margin-top:50px;
+
+}
+
+.social{
+
+    text-align:center;
+
+}
+
+section{
+
+    padding:70px 0;
+
+}
+
+}
