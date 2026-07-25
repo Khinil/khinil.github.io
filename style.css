@@ -799,3 +799,30 @@ footer hr{
 }
 
 }
+@keyframes pulse{
+
+0%{
+
+box-shadow:0 0 0 rgba(37,99,235,.4);
+
+}
+
+50%{
+
+box-shadow:0 0 25px rgba(37,99,235,.95);
+
+}
+
+100%{
+
+box-shadow:0 0 0 rgba(37,99,235,.4);
+
+}
+
+}
+
+.timeline-dot{
+
+animation:pulse 2.8s infinite;
+
+}
