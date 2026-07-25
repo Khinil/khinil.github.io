@@ -143,7 +143,45 @@ section{
     transform:translateY(-6px);
 
 }
+/* ==========================================
+   DESIGNATION
+========================================== */
 
+.designation{
+
+    font-size:1.35rem;
+
+    color:#4B5563;
+
+    margin:10px 0 15px;
+
+    font-weight:500;
+
+}
+
+.designation strong{
+
+    color:#2563EB;
+
+}
+
+/* ==========================================
+   TYPING TEXT
+========================================== */
+
+.typing{
+
+    color:#2563EB;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    min-height:55px;
+
+    margin-bottom:40px;
+
+}
 /* ==========================================================
    RESEARCH TAGS
 ========================================================== */
