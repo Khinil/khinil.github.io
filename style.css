@@ -199,46 +199,84 @@ section{
 
 
 /* ==========================================================
-   PROFILE PHOTO
+   HERO PROFILE PHOTO
 ========================================================== */
 
 .hero-photo{
-    width:340px;
-    height:340px;
+
+    width:370px;
+
+    height:370px;
+
     object-fit:cover;
+
     border-radius:50%;
+
     border:8px solid rgba(255,255,255,.15);
-    box-shadow:0 25px 60px rgba(0,0,0,.35);
-    transition:.4s;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35),
+        0 0 40px rgba(0,140,255,.15);
+
+    transition:all .4s ease;
+
+}
+
+.hero-photo:hover{
+
+    transform:scale(1.04);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.45),
+        0 0 60px rgba(255,213,79,.35);
+
 }
 /* ==========================================================
    SOCIAL ICONS
 ========================================================== */
 
-.social{
+.photo-social{
 
-    margin-top:35px;
+    margin-top:30px;
 
 }
 
-.social a{
+.photo-social a{
 
     color:white;
 
-    font-size:28px;
+    font-size:30px;
 
-    margin-right:18px;
+    margin:0 14px;
 
     transition:.3s;
 
 }
 
-.social a:hover{
+.photo-social a:hover{
 
     color:#FFD54F;
 
+    transform:translateY(-6px);
+
+}
+/* ==========================================================
+   HERO BUTTONS
+========================================================== */
+
+.hero-buttons{
+
+    margin-top:40px;
+
 }
 
+.hero-buttons .btn{
+
+    margin-right:15px;
+
+    margin-bottom:12px;
+
+}
 
 /* ==========================================================
    SECTION TITLES
