@@ -88,70 +88,61 @@ section{
    HERO SECTION
 ========================================================== */
 
-.hero{
+.hero-buttons{
 
-    min-height:100vh;
+    margin-top:45px;
 
-    display:flex;
+}
 
-    align-items:center;
+.hero-buttons .btn{
 
-    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    margin-right:15px;
+
+    margin-bottom:15px;
+
+}
+
+.hero-photo{
+
+    width:360px;
+
+    height:360px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:8px solid rgba(255,255,255,.15);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
+.photo-social{
+
+    margin-top:30px;
+
+}
+
+.photo-social a{
 
     color:white;
 
-    padding-top:100px;
+    font-size:30px;
+
+    margin:0 15px;
+
+    transition:.3s;
 
 }
 
-.hero-tag{
-
-    display:inline-block;
-
-    padding:8px 18px;
-
-    border-radius:30px;
-
-    background:rgba(255,255,255,.15);
-
-    font-size:14px;
-
-    letter-spacing:1px;
-
-}
-
-.hero h1{
-
-    font-size:4rem;
-
-    font-weight:700;
-
-    margin-top:20px;
-
-}
-
-.typing{
+.photo-social a:hover{
 
     color:#FFD54F;
 
-    font-size:1.5rem;
-
-    margin:20px 0;
-
-    min-height:40px;
+    transform:translateY(-6px);
 
 }
-
-.hero-text{
-
-    font-size:18px;
-
-    color:#d8e1ee;
-
-    max-width:620px;
-
-}
-
 
 /* ==========================================================
    RESEARCH TAGS
