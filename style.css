@@ -197,43 +197,85 @@ section{
 
 }
 
+.hero{
 
-/* ==========================================================
-   HERO PROFILE PHOTO
-========================================================== */
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    background:#F5F7FA;
+
+}
+
+.hero-name{
+
+    font-size:4rem;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+    letter-spacing:2px;
+
+}
+
+.hero-buttons{
+
+    margin-top:45px;
+
+}
+
+.hero-buttons .btn{
+
+    margin-right:15px;
+
+    padding:14px 28px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:#2563EB;
+
+    border:none;
+
+}
+
+.btn-outline-primary{
+
+    border:2px solid #2563EB;
+
+    color:#2563EB;
+
+}
+
+.btn-dark{
+
+    background:#0F172A;
+
+}
 
 .hero-photo{
 
-    width:370px;
+    width:360px;
 
-    height:370px;
+    height:360px;
 
     object-fit:cover;
 
     border-radius:50%;
 
-    border:8px solid rgba(255,255,255,.15);
+    border:6px solid white;
 
-    box-shadow:
-        0 20px 45px rgba(0,0,0,.35),
-        0 0 40px rgba(0,140,255,.15);
-
-    transition:all .4s ease;
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
 
 }
-
-.hero-photo:hover{
-
-    transform:scale(1.04);
-
-    box-shadow:
-        0 25px 55px rgba(0,0,0,.45),
-        0 0 60px rgba(255,213,79,.35);
-
-}
-/* ==========================================================
-   SOCIAL ICONS
-========================================================== */
 
 .photo-social{
 
@@ -243,11 +285,11 @@ section{
 
 .photo-social a{
 
-    color:white;
+    color:#475569;
 
     font-size:30px;
 
-    margin:0 14px;
+    margin:0 12px;
 
     transition:.3s;
 
@@ -255,47 +297,9 @@ section{
 
 .photo-social a:hover{
 
-    color:#FFD54F;
-
-    transform:translateY(-6px);
+    color:#2563EB;
 
 }
-/* ==========================================================
-   HERO BUTTONS
-========================================================== */
-
-.hero-buttons{
-
-    margin-top:40px;
-
-}
-
-.hero-buttons .btn{
-
-    margin-right:15px;
-
-    margin-bottom:12px;
-
-}
-
-/* ==========================================================
-   SECTION TITLES
-========================================================== */
-
-section h2{
-
-    text-align:center;
-
-    font-size:2.5rem;
-
-    font-weight:700;
-
-    margin-bottom:50px;
-
-    color:#0f172a;
-
-}
-
 
 /* ==========================================================
    ABOUT SECTION
