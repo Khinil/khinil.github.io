@@ -1,285 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Poppins',sans-serif;
-    background:#f7f9fc;
-    color:#222;
-    overflow-x:hidden;
-}
-
-/* ---------- NAVBAR ---------- */
-
-.navbar{
-    background:rgba(9,18,44,.92);
-    backdrop-filter:blur(10px);
-    transition:.3s;
-}
-
-.navbar-brand{
-    font-weight:700;
-    letter-spacing:1px;
-}
-
-.nav-link{
-    color:white !important;
-    margin-left:18px;
-}
-
-.nav-link:hover{
-    color:#ffc107 !important;
-}
-
-/* ---------- HERO ---------- */
-
-.hero{
-
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    background:
-    linear-gradient(
-    135deg,
-    #0f172a,
-    #1d4ed8,
-    #2563eb);
-
-    color:white;
-
-    padding-top:100px;
-
-}
-
-.small-heading{
-
-    color:#FFD54F;
-
-    letter-spacing:3px;
-
-    font-weight:600;
-
-}
-
-.hero h1{
-
-    font-size:4rem;
-
-    font-weight:700;
-
-}
-
-.typing{
-
-    color:#FFD54F;
-
-    height:40px;
-
-    margin-top:20px;
-
-}
-
-.hero-text{
-
-    margin-top:25px;
-
-    line-height:1.9;
-
-    font-size:18px;
-
-    max-width:650px;
-
-}
-
-/* ---------- BUTTON ---------- */
-
-.btn{
-
-    border-radius:40px;
-
-    padding:12px 30px;
-
-    margin-right:12px;
-
-    transition:.3s;
-
-}
-
-.btn:hover{
-
-    transform:translateY(-4px);
-
-}
-
-/* ---------- PHOTO ---------- */
-
-.profile-img{
-
-    width:340px;
-
-    height:340px;
-
-    object-fit:cover;
-
-    border-radius:50%;
-
-    border:8px solid rgba(255,255,255,.25);
-
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.35);
-
-    transition:.4s;
-
-}
-
-.profile-img:hover{
-
-    transform:scale(1.04);
-
-}
-
-/* ---------- SOCIAL ---------- */
-
-.social a{
-
-    color:white;
-
-    font-size:28px;
-
-    margin-right:22px;
-
-    transition:.3s;
-
-}
-
-.social a:hover{
-
-    color:#FFD54F;
-
-}
-
-/* ---------- SECTIONS ---------- */
-
-section{
-
-    padding:90px 0;
-
-}
-
-section h2{
-
-    font-size:2.4rem;
-
-    text-align:center;
-
-    margin-bottom:45px;
-
-    font-weight:700;
-
-    color:#0f172a;
-
-}
-
-/* ---------- RESEARCH CARD ---------- */
-
-.research-card{
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:35px;
-
-    text-align:center;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-    transition:.35s;
-
-    height:100%;
-
-}
-
-.research-card:hover{
-
-    transform:translateY(-12px);
-
-    box-shadow:0 20px 45px rgba(0,0,0,.18);
-
-}
-
-.research-card h3{
-
-    color:#0d6efd;
-
-    margin-bottom:15px;
-
-}
-
-/* ---------- FOOTER ---------- */
-
-footer{
-
-    background:#0f172a;
-
-    color:white;
-
-    text-align:center;
-
-    padding:30px;
-
-}
-
-/* ---------- SCROLL BAR ---------- */
-
-::-webkit-scrollbar{
-
-    width:8px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:#0d6efd;
-
-    border-radius:20px;
-
-}
-
-/* ---------- MOBILE ---------- */
-
-@media(max-width:992px){
-
-.hero{
-
-text-align:center;
-
-padding-top:140px;
-
-}
-
-.profile-img{
-
-width:250px;
-
-height:250px;
-
-margin-top:50px;
-
-}
-
-.hero h1{
-
-font-size:2.8rem;
-
-}
-
-}
+/* ====================================================== */
+/* GLOBAL STYLES */
+/* ====================================================== */
+
+/* ====================================================== */
+/* NAVBAR */
+/* ====================================================== */
+
+/* ====================================================== */
+/* HERO SECTION */
+/* ====================================================== */
+
+/* ====================================================== */
+/* RESEARCH CARDS */
+/* ====================================================== */
+
+/* ====================================================== */
+/* PROJECTS */
+/* ====================================================== */
+
+/* ====================================================== */
+/* BLOG */
+/* ====================================================== */
+
+/* ====================================================== */
+/* FOOTER */
+/* ====================================================== */
+
+/* ====================================================== */
+/* MOBILE RESPONSIVE */
+/* ====================================================== */
