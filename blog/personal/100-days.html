@@ -243,84 +243,144 @@
 
         @media (max-width: 768px) {
 
-            body {
-                background: #000;
-                overflow: hidden;
-            }
+    body {
+        background: #000;
+        overflow: hidden;
+    }
 
-            .story-page {
-                padding: 0;
-                min-height: 100vh;
-            }
+    .story-page {
+        padding: 0;
+        height: 100dvh;
+        min-height: 100dvh;
+        overflow: hidden;
+    }
 
-            .story-viewer {
-                width: 100%;
-                height: 100vh;
-                min-height: 100vh;
-                border-radius: 0;
-                background: #000;
-            }
+    .story-viewer {
+        width: 100%;
+        height: 100dvh;
+        min-height: 0;
+        border-radius: 0;
+        background: #000;
+    }
 
-            .story-content {
-                display: flex;
-                flex-direction: column;
-                min-height: 100vh;
-            }
+    .story-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 0;
+    }
 
-            .photo-section {
-                height: 68vh;
-                min-height: 0;
-                flex-shrink: 0;
-            }
+    /* 70% PHOTO */
 
-            .story-photo {
-                object-fit: cover;
-            }
+    .photo-section {
+        height: 70%;
+        min-height: 0;
+        flex-shrink: 0;
+        background: #000;
+    }
 
-            .text-section {
-                flex: 1;
-                min-height: 32vh;
-                padding: 20px 22px 25px;
-                background: #ffffff;
-                justify-content: flex-start;
-            }
+    .story-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.35s ease,
+                    transform 0.45s ease;
+    }
 
-            .text-section h1 {
-                font-size: 1.6rem;
-            }
+    /* 30% TEXT */
 
-            .date {
-                margin-bottom: 12px;
-                font-size: 0.9rem;
-            }
+    .text-section {
+        height: 30%;
+        min-height: 0;
+        flex-shrink: 0;
+        overflow-y: auto;
 
-            .thought {
-                font-size: 1.05rem;
-                line-height: 1.5;
-            }
+        padding: 16px 20px 18px;
 
-            .location {
-                margin-top: 12px;
-            }
+        background: linear-gradient(
+            to bottom,
+            #ffffff 0%,
+            #f8fafc 100%
+        );
 
-            .day-progress {
-                margin-top: 12px;
-            }
+        justify-content: flex-start;
 
-            .navigation {
-                display: none;
-            }
+        border-radius: 20px 20px 0 0;
+        margin-top: -16px;
 
-            .back-personal {
-                top: 14px;
-                left: 14px;
-            }
+        position: relative;
+        z-index: 2;
 
-            .photo-counter {
-                top: 48px;
-                right: 14px;
-            }
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.28);
+
+        animation: textSlideUp 0.45s ease;
+
+        scrollbar-width: none;
+    }
+
+    .text-section::-webkit-scrollbar {
+        display: none;
+    }
+
+    @keyframes textSlideUp {
+
+        from {
+            opacity: 0;
+            transform: translateY(18px);
         }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    }
+
+    .text-section h1 {
+        font-size: 1.35rem;
+        margin: 6px 0 4px;
+    }
+
+    .day-number {
+        font-size: 0.8rem;
+    }
+
+    .date {
+        margin-bottom: 8px;
+        font-size: 0.82rem;
+    }
+
+    .thought {
+        font-size: 0.92rem;
+        line-height: 1.4;
+        margin-bottom: 5px;
+    }
+
+    .location {
+        margin-top: 7px;
+        font-size: 0.82rem;
+    }
+
+    .day-progress {
+        margin-top: 7px;
+        font-size: 0.78rem;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .back-personal {
+        top: 14px;
+        left: 14px;
+    }
+
+    .photo-counter {
+        top: 48px;
+        right: 14px;
+    }
+
+}
     </style>
 </head>
 
