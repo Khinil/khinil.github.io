@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>[ARTICLE TITLE] | Khinil Sahu</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+        .article-header {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            color: #64748B;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .article-content {
+            max-width: 800px;
+            margin: 50px auto;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .article-content h1 {
+            color: #0F172A;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .article-content h2 {
+            color: #0F172A;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .article-content h3 {
+            color: #1E293B;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .article-content p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .article-content li {
+            margin-bottom: 8px;
+        }
+
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-content figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .article-content figcaption {
+            font-size: 0.9rem;
+            color: #64748B;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .highlight-box {
+            background: rgba(37, 99, 235, 0.08);
+            border-left: 4px solid #2563EB;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .quote-box {
+            background: #f8fafc;
+            border-left: 4px solid #64748B;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            font-style: italic;
+            color: #475569;
+        }
+
+        .article-content a {
+            color: #2563EB;
+            text-decoration: none;
+            border-bottom: 1px dotted #2563EB;
+            transition: 0.3s;
+        }
+
+        .article-content a:hover {
+            color: #1e40af;
+            border-bottom-color: #1e40af;
+        }
+
+        .youtube-embed {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 30px auto;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .youtube-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #2563EB;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            color: #1e40af;
+            transform: translateX(-3px);
+        }
+
+        .reading-time {
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        .insight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="../../index.html">
+            KHINIL SAHU
+        </a>
+
+        <a class="nav-link" href="../../index.html">
+            Home
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ARTICLE HEADER -->
+
+<section class="article-header">
+
+    <div class="container">
+
+        <a href="index.html" class="back-link">
+            <i class="bi bi-arrow-left"></i> Back to Personal Blog
+        </a>
+
+        <h1 style="color: #0F172A; font-size: 2.5rem; font-weight: 700; margin: 0;">
+            [ARTICLE TITLE]
+        </h1>
+
+        <div class="article-meta">
+            <span>
+                <i class="bi bi-calendar"></i>
+                [PUBLICATION DATE]
+            </span>
+            <span>
+                <i class="bi bi-clock"></i>
+                <span class="reading-time">[READING TIME] min read</span>
+            </span>
+            <span>
+                <i class="bi bi-tag"></i>
+                [TAG 1] • [TAG 2]
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ARTICLE CONTENT -->
+
+<article class="article-content">
+
+    <p class="lead" style="color: #475569; font-size: 1.1rem;">
+        [INTRODUCTION - Set the tone and context for your personal reflection]
+    </p>
+
+
+    <!-- SECTION 1 -->
+
+    <h2>The Beginning</h2>
+
+    <p>
+        [Opening paragraph - Share the background or the starting point of your story]
+    </p>
+
+    <p>
+        [Continue with more details - Describe the situation, emotions, or thoughts]
+    </p>
+
+
+    <!-- SECTION 2 -->
+
+    <h2>Key Moments</h2>
+
+    <h3>Turning Point 1: [Name]</h3>
+
+    <p>
+        [Describe an important moment or experience]
+    </p>
+
+    <div class="highlight-box">
+        <p style="margin: 0;">
+            <strong>💡 Reflection:</strong> [A personal insight or takeaway from this moment]
+        </p>
+    </div>
+
+    <h3>Turning Point 2: [Name]</h3>
+
+    <p>
+        [Describe another important moment]
+    </p>
+
+    <ul>
+        <li>Lesson or observation 1</li>
+        <li>Lesson or observation 2</li>
+        <li>Lesson or observation 3</li>
+    </ul>
+
+
+    <!-- SECTION 3 -->
+
+    <h2>Challenges and Growth</h2>
+
+    <p>
+        [Discuss challenges faced and how they contributed to growth]
+    </p>
+
+    <div class="quote-box">
+        "A meaningful quote or personal thought that encapsulates this section"
+    </div>
+
+    <p>
+        [Continue with more reflection]
+    </p>
+
+
+    <!-- SECTION 4: Images -->
+
+    <h2>Memories</h2>
+
+    <figure>
+        <img src="image-placeholder.jpg" alt="[Image Description]">
+        <figcaption>A moment from [context or date]</figcaption>
+    </figure>
+
+
+    <!-- SECTION 5 -->
+
+    <h2>What I Learned</h2>
+
+    <p>
+        [Summarize key learnings or insights]
+    </p>
+
+    <ol>
+        <li>[Learning point 1 - Detailed explanation]</li>
+        <li>[Learning point 2 - Detailed explanation]</li>
+        <li>[Learning point 3 - Detailed explanation]</li>
+    </ol>
+
+
+    <!-- SECTION 6: Recommendations -->
+
+    <h2>Thoughts for Others</h2>
+
+    <p>
+        [Offer perspective or advice based on your experience]
+    </p>
+
+    <div class="insight-box">
+        <strong>✨ Key Takeaway:</strong> [A sentence or two summarizing the main message of this post]
+    </div>
+
+
+    <!-- SECTION 7: Conclusion -->
+
+    <h2>Looking Ahead</h2>
+
+    <p>
+        [Reflect on how this experience shapes your future]
+    </p>
+
+    <p>
+        [Concluding thoughts or a forward-looking perspective]
+    </p>
+
+
+    <!-- RELATED LINKS -->
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8fafc; border-radius: 8px;">
+
+        <h3 style="margin-top: 0;">Related Posts</h3>
+
+        <ul style="margin-bottom: 0;">
+            <li><a href="post-title-1.html">Related Post 1 Title</a></li>
+            <li><a href="post-title-2.html">Related Post 2 Title</a></li>
+            <li><a href="post-title-3.html">Related Post 3 Title</a></li>
+        </ul>
+
+    </div>
+
+
+</article>
+
+
+<!-- FOOTER -->
+
+<footer style="margin-top: 80px;">
+
+    <div class="container">
+
+        <hr>
+
+        <p class="copyright">
+            © 2026 Khinil Sahu
+        </p>
+
+        <blockquote class="footer-quote">
+
+            <p>
+                🌱 <em>
+                "Embracing complex science to create beautifully simple impact."
+                </em>
+            </p>
+
+            <cite>
+                — Aspiring Researcher
+            </cite>
+
+        </blockquote>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
