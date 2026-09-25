@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Personal Blog | Khinil Sahu</title>
+    <title>100 Days Challenge | Khinil Sahu</title>
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
@@ -19,54 +19,33 @@
     <link rel="stylesheet" href="../../style.css">
 
     <style>
-        .blog-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: 0.35s;
-            text-align: left;
+        /* ========================================
+           100 DAYS CHALLENGE STYLES
+        ======================================== */
+
+        .challenge-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+            border-bottom: 1px solid rgba(37, 99, 235, 0.2);
         }
 
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .blog-card h3 {
+        .challenge-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
             color: #0F172A;
             margin-bottom: 10px;
-            font-weight: 700;
         }
 
-        .blog-card .date {
+        .challenge-header .subtitle {
+            font-size: 1.1rem;
             color: #64748B;
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .blog-card p {
-            color: #475569;
-            font-size: 1rem;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .blog-card .btn {
-            margin-top: 10px;
-        }
-
-        .blog-intro {
-            background: rgba(37, 99, 235, 0.08);
-            border-left: 4px solid #2563EB;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 40px;
+            font-style: italic;
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: #2563EB;
             text-decoration: none;
             font-weight: 500;
@@ -76,6 +55,275 @@
         .back-link:hover {
             color: #1e40af;
             transform: translateX(-3px);
+        }
+
+        /* Journal Viewer Container */
+        .journal-container {
+            max-width: 700px;
+            margin: 60px auto 40px;
+            padding: 0 15px;
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            margin-bottom: 30px;
+        }
+
+        .day-counter {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0F172A;
+            margin-bottom: 12px;
+        }
+
+        .progress {
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #2563EB, #1e40af);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        /* Journal Card */
+        .journal-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            position: relative;
+        }
+
+        /* Photo Section */
+        .journal-photo-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+
+        .journal-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        .journal-photo-container:active .journal-photo {
+            transform: scale(1.01);
+        }
+
+        /* Content Section */
+        .journal-content {
+            padding: 30px 25px;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.15);
+        }
+
+        .day-number {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2563EB;
+        }
+
+        .day-date {
+            font-size: 0.95rem;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        .day-location {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.08);
+            color: #2563EB;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        .day-thought {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #334155;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Navigation Controls */
+        .journal-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background: #2563EB;
+            color: white;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .nav-button:hover {
+            background: #1e40af;
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .nav-button:active {
+            transform: scale(0.96);
+        }
+
+        .nav-button:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-indicator {
+            text-align: center;
+            font-weight: 600;
+            color: #64748B;
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        /* Touch Swipe Hint */
+        .swipe-hint {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .challenge-header h1 {
+                font-size: 2rem;
+            }
+
+            .challenge-header .subtitle {
+                font-size: 1rem;
+            }
+
+            .journal-container {
+                margin: 40px auto 30px;
+            }
+
+            .journal-content {
+                padding: 25px 20px;
+            }
+
+            .journal-controls {
+                padding: 20px;
+            }
+
+            .nav-button {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+
+            .swipe-hint {
+                display: block;
+            }
+
+            .day-thought {
+                font-size: 1rem;
+            }
+        }
+
+        /* Desktop Drag Cursor */
+        .journal-card.draggable {
+            cursor: grab;
+        }
+
+        .journal-card.dragging {
+            cursor: grabbing;
+        }
+
+        /* Info Section */
+        .challenge-info {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            margin-top: 60px;
+        }
+
+        .challenge-info h2 {
+            font-size: 1.6rem;
+            color: #0F172A;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .challenge-info p {
+            font-size: 1.05rem;
+            color: #475569;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.7;
+        }
+
+        .challenge-tagline {
+            font-size: 1.2rem;
+            color: #2563EB;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        /* Placeholder Image Indicator */
+        .placeholder-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+
+        /* Transition animation */
+        .journal-card {
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .journal-card.slide-left {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .journal-card.slide-right {
+            transform: translateX(100%);
+            opacity: 0;
         }
     </style>
 
@@ -105,7 +353,7 @@
 
 <!-- PAGE HEADER -->
 
-<section style="padding-top:140px; padding-bottom:30px;">
+<section class="challenge-header">
 
     <div class="container">
 
@@ -113,130 +361,97 @@
             <i class="bi bi-arrow-left"></i> Back to Blog
         </a>
 
-        <h1 style="font-size: 2.5rem; font-weight: 700; color: #0F172A; margin-bottom: 10px;">
-            Personal Blog
-        </h1>
+        <h1>100 Days Challenge</h1>
 
-        <p class="lead" style="color: #64748B; max-width: 700px;">
-            Reflections on my journey, experiences at IIT Bhubaneswar, research life, and personal learning.
-        </p>
+        <p class="subtitle">One photo. One thought. One day at a time.</p>
 
     </div>
 
 </section>
 
 
-<!-- INTRODUCTION -->
+<!-- JOURNAL VIEWER -->
 
-<section style="padding: 30px 0;">
+<div class="journal-container">
 
-    <div class="container">
+    <!-- Progress Section -->
+    <div class="progress-section">
+        <div class="day-counter" id="dayCounter">Day 01 / 100</div>
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 1%;"></div>
+        </div>
+    </div>
 
-        <div class="blog-intro">
+    <!-- Journal Card -->
+    <div class="journal-card" id="journalCard">
 
-            <p style="margin-bottom: 0;">
-                Welcome to my personal blog. Here I share my experiences, thoughts, and reflections on my academic journey, 
-                life at IIT Bhubaneswar, internships, research adventures, books I've read, and lessons learned along the way.
+        <!-- Photo Section -->
+        <div class="journal-photo-container" id="photoContainer">
+            <img src="photos/day01.jpg" alt="Day 1" class="journal-photo" id="journalPhoto">
+            <div class="placeholder-indicator" id="placeholderIndicator" style="display: none;">
+                PLACEHOLDER
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="journal-content">
+
+            <div class="day-header">
+                <div class="day-number" id="dayTitle">Day 1</div>
+                <div class="day-date" id="dayDate">September 26, 2026</div>
+            </div>
+
+            <div id="dayLocation" class="day-location" style="display: none;"></div>
+
+            <p class="day-thought" id="dayThought">
+                Starting this 100-day challenge today. One small record of each day.
             </p>
 
         </div>
 
     </div>
 
-</section>
+    <!-- Navigation Controls -->
+    <div class="journal-controls">
+
+        <button class="nav-button" id="prevBtn" aria-label="Previous day">
+            <i class="bi bi-chevron-left"></i>
+        </button>
+
+        <div class="nav-indicator" id="navIndicator">
+            Swipe or use arrows
+        </div>
+
+        <button class="nav-button" id="nextBtn" aria-label="Next day">
+            <i class="bi bi-chevron-right"></i>
+        </button>
+
+    </div>
+
+    <!-- Swipe Hint for Mobile -->
+    <div class="swipe-hint">
+        ← Swipe left/right →
+    </div>
+
+</div>
 
 
-<!-- BLOG POSTS -->
+<!-- INFO SECTION -->
 
-<section>
+<section class="challenge-info">
 
     <div class="container">
 
-        <div class="row g-4">
+        <h2>100 Days. 100 Photographs. 100 Thoughts.</h2>
 
+        <p>
+            A visual journal capturing one moment and one reflection from each day of my 100-day challenge. 
+            Each entry is a snapshot of my thoughts, travels, and experiences during this transformative journey.
+        </p>
 
-            <!-- POST 1 -->
-
-            <div class="col-lg-6">
-
-                <div class="blog-card">
-
-                    <h3>My Journey from B.Tech to MS by Research</h3>
-
-                    <div class="date">
-                        <i class="bi bi-calendar"></i> Upcoming
-                    </div>
-
-                    <p>
-                        The transition from undergraduate studies to postgraduate research is a significant milestone. 
-                        In this post, I'll share my journey, the decision-making process, and the lessons I learned 
-                        that led me to pursue MS by Research at IIT Bhubaneswar.
-                    </p>
-
-                    <a href="post-1.html" class="btn btn-primary btn-sm">
-                        Read More
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- POST 2 -->
-
-            <div class="col-lg-6">
-
-                <div class="blog-card">
-
-                    <h3>Life at IIT Bhubaneswar</h3>
-
-                    <div class="date">
-                        <i class="bi bi-calendar"></i> Upcoming
-                    </div>
-
-                    <p>
-                        From the campus beauty to the research culture, from friendships to academic challenges—
-                        my experiences at IIT Bhubaneswar have shaped who I am. A personal reflection on the time 
-                        spent here and the memories I carry.
-                    </p>
-
-                    <a href="post-2.html" class="btn btn-primary btn-sm">
-                        Read More
-                    </a>
-
-                </div>
-
-            </div>
-
-
-            <!-- POST 3 -->
-
-            <div class="col-lg-6">
-
-                <div class="blog-card">
-
-                    <h3>Lessons from My Research Journey</h3>
-
-                    <div class="date">
-                        <i class="bi bi-calendar"></i> Upcoming
-                    </div>
-
-                    <p>
-                        Research is as much about perseverance as it is about curiosity. In this post, I'll reflect on 
-                        the ups and downs of my research journey, the challenges faced, and the valuable lessons learned 
-                        that go beyond technical knowledge.
-                    </p>
-
-                    <a href="post-3.html" class="btn btn-primary btn-sm">
-                        Read More
-                    </a>
-
-                </div>
-
-            </div>
-
-
-        </div>
+        <p class="challenge-tagline">
+            📸 Every day, a story. Every story, a memory.
+        </p>
 
     </div>
 
@@ -245,7 +460,7 @@
 
 <!-- FOOTER -->
 
-<footer style="margin-top: 60px;">
+<footer style="margin-top: 40px;">
 
     <div class="container">
 
@@ -272,6 +487,202 @@
     </div>
 
 </footer>
+
+
+<!-- CHALLENGE DATA & JAVASCRIPT -->
+
+<script>
+    // ========================================
+    // 100 DAYS CHALLENGE DATA
+    // ========================================
+    // Add entries here. Replace photos/dayXX.jpg with actual image paths.
+    // When you upload actual photos, update the image paths.
+    // For now, placeholders are indicated.
+
+    const challengeData = [
+        {
+            day: 1,
+            date: "September 26, 2026",
+            image: "photos/day01.jpg",
+            thought: "Starting this 100-day challenge today. One small record of each day.",
+            location: "IIT Bhubaneswar",
+            isPlaceholder: true
+        },
+        {
+            day: 2,
+            date: "September 27, 2026",
+            image: "photos/day02.jpg",
+            thought: "Every challenge starts with a single step. Today I'm reflecting on why I chose to document these 100 days.",
+            location: "Campus",
+            isPlaceholder: true
+        },
+        {
+            day: 3,
+            date: "September 28, 2026",
+            image: "photos/day03.jpg",
+            thought: "Three days in. The habit is forming. I'm learning to see the extraordinary in the ordinary.",
+            location: "Lab",
+            isPlaceholder: true
+        }
+        // Add more entries as needed (days 4-100)
+        // Format:
+        // {
+        //     day: 4,
+        //     date: "September 29, 2026",
+        //     image: "photos/day04.jpg",
+        //     thought: "Your reflection here...",
+        //     location: "Location name",
+        //     isPlaceholder: false  // Set to false when using actual photos
+        // }
+    ];
+
+    // ========================================
+    // CHALLENGE VIEWER LOGIC
+    // ========================================
+
+    let currentDayIndex = 0;
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+
+    const journalCard = document.getElementById('journalCard');
+    const journalPhoto = document.getElementById('journalPhoto');
+    const dayTitle = document.getElementById('dayTitle');
+    const dayDate = document.getElementById('dayDate');
+    const dayLocation = document.getElementById('dayLocation');
+    const dayThought = document.getElementById('dayThought');
+    const dayCounter = document.getElementById('dayCounter');
+    const progressBar = document.getElementById('progressBar');
+    const placeholderIndicator = document.getElementById('placeholderIndicator');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const navIndicator = document.getElementById('navIndicator');
+
+    // Update display with current day
+    function updateDisplay() {
+        const entry = challengeData[currentDayIndex];
+
+        dayTitle.textContent = `Day ${entry.day}`;
+        dayDate.textContent = entry.date;
+        dayThought.textContent = entry.thought;
+        journalPhoto.src = entry.image;
+        journalPhoto.alt = `Day ${entry.day}`;
+
+        // Location
+        if (entry.location) {
+            dayLocation.textContent = `📍 ${entry.location}`;
+            dayLocation.style.display = 'inline-block';
+        } else {
+            dayLocation.style.display = 'none';
+        }
+
+        // Placeholder indicator
+        if (entry.isPlaceholder) {
+            placeholderIndicator.style.display = 'block';
+            placeholderIndicator.textContent = 'PLACEHOLDER';
+        } else {
+            placeholderIndicator.style.display = 'none';
+        }
+
+        // Progress
+        const progress = ((entry.day) / 100) * 100;
+        progressBar.style.width = progress + '%';
+        dayCounter.textContent = `Day ${String(entry.day).padStart(2, '0')} / 100`;
+
+        // Button states
+        prevBtn.disabled = currentDayIndex === 0;
+        nextBtn.disabled = currentDayIndex === challengeData.length - 1;
+
+        // Remove animation classes
+        journalCard.classList.remove('slide-left', 'slide-right');
+    }
+
+    // Navigate to next day
+    function goToNextDay() {
+        if (currentDayIndex < challengeData.length - 1) {
+            journalCard.classList.add('slide-left');
+            setTimeout(() => {
+                currentDayIndex++;
+                updateDisplay();
+            }, 200);
+        }
+    }
+
+    // Navigate to previous day
+    function goToPrevDay() {
+        if (currentDayIndex > 0) {
+            journalCard.classList.add('slide-right');
+            setTimeout(() => {
+                currentDayIndex--;
+                updateDisplay();
+            }, 200);
+        }
+    }
+
+    // Next button click
+    nextBtn.addEventListener('click', goToNextDay);
+
+    // Previous button click
+    prevBtn.addEventListener('click', goToPrevDay);
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            goToNextDay();
+        } else if (e.key === 'ArrowLeft') {
+            goToPrevDay();
+        }
+    });
+
+    // Touch/Drag handling for desktop and mobile
+    journalCard.addEventListener('mousedown', startDrag);
+    journalCard.addEventListener('touchstart', startDrag);
+
+    function startDrag(e) {
+        isDragging = true;
+        startX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+        currentX = startX;
+        journalCard.classList.add('dragging');
+    }
+
+    document.addEventListener('mousemove', moveDrag);
+    document.addEventListener('touchmove', moveDrag);
+
+    function moveDrag(e) {
+        if (!isDragging) return;
+        currentX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    }
+
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('touchend', endDrag);
+
+    function endDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        journalCard.classList.remove('dragging');
+
+        const diff = startX - currentX;
+        const threshold = 50; // Minimum swipe distance
+
+        if (diff > threshold) {
+            // Swiped left → next day
+            goToNextDay();
+        } else if (diff < -threshold) {
+            // Swiped right → previous day
+            goToPrevDay();
+        }
+    }
+
+    // Initialize display
+    updateDisplay();
+
+    // Prevent accidental page scroll on mobile while dragging
+    document.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+</script>
 
 
 </body>
