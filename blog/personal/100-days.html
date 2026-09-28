@@ -2,14 +2,13 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>100 Days Challenge | Khinil Sahu</title>
 
     <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
     <link
@@ -19,379 +18,154 @@
     <link rel="stylesheet" href="../../style.css">
 
     <style>
-
         * {
             box-sizing: border-box;
         }
 
         body {
             margin: 0;
-            background: #0f172a;
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
         }
 
         .story-page {
             min-height: 100vh;
-            padding: 90px 20px 30px;
-
+            background: #000;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .story-viewer {
-            width: min(1100px, 100%);
-            min-height: 680px;
-
-            background: #ffffff;
-
-            border-radius: 20px;
-            overflow: hidden;
-
+            width: 100%;
+            max-width: 1200px;
+            min-height: 100vh;
             position: relative;
-
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.25);
+            background: #111;
+            overflow: hidden;
         }
 
-        /* STORY PROGRESS */
+        /* Back button */
+        .back-personal {
+            position: absolute;
+            top: 22px;
+            left: 25px;
+            z-index: 20;
 
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+
+            background: rgba(0, 0, 0, 0.55);
+            padding: 8px 14px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+        }
+
+        .back-personal:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Story progress */
         .story-progress {
             position: absolute;
-
-            top: 18px;
-            left: 20px;
-            right: 20px;
-
-            z-index: 20;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55%;
+            max-width: 650px;
 
             display: flex;
             gap: 5px;
+
+            z-index: 20;
         }
 
         .progress-segment {
-            height: 4px;
-
+            height: 3px;
             flex: 1;
-
+            border-radius: 5px;
             background: rgba(255, 255, 255, 0.35);
-
-            border-radius: 10px;
-
-            overflow: hidden;
         }
 
         .progress-segment.active {
-            background: #ffffff;
+            background: #fff;
         }
 
-        /* MAIN LAYOUT */
-
+        /* Main content */
         .story-content {
-            min-height: 680px;
-
+            min-height: 100vh;
             display: grid;
-
-            grid-template-columns:
-                1.45fr 0.75fr;
+            grid-template-columns: 60% 40%;
         }
 
-        /* PHOTO */
-
+        /* Photo */
         .photo-section {
-            background: #111827;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
             position: relative;
-
-            min-height: 680px;
-
+            min-height: 100vh;
+            background: #050505;
             overflow: hidden;
         }
 
         .story-photo {
             width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             display: block;
-
-            transition:
-                transform 0.35s ease,
-                opacity 0.25s ease;
         }
 
-        .story-photo.slide-next {
-            animation: slideNext 0.35s ease;
+        .photo-counter {
+            position: absolute;
+            top: 35px;
+            right: 25px;
+
+            background: rgba(0, 0, 0, 0.55);
+            padding: 7px 12px;
+            border-radius: 20px;
+
+            font-size: 13px;
+            z-index: 10;
         }
 
-        .story-photo.slide-prev {
-            animation: slidePrev 0.35s ease;
-        }
-
-        @keyframes slideNext {
-
-            from {
-                transform: translateX(35px);
-                opacity: 0.3;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-
-        }
-
-        @keyframes slidePrev {
-
-            from {
-                transform: translateX(-35px);
-                opacity: 0.3;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-
-        }
-
-        /* SKIPPED DAY */
-
+        /* Skipped day */
         .skipped-message {
             position: absolute;
-
             inset: 0;
 
             display: none;
-
-            align-items: center;
-            justify-content: center;
-
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
             text-align: center;
-
-            color: white;
-
-            background: #111827;
-
-            z-index: 3;
+            background: #111;
         }
 
         .skipped-icon {
-            font-size: 3rem;
-
+            font-size: 50px;
             margin-bottom: 15px;
+            opacity: 0.7;
         }
 
         .skipped-title {
-            font-size: 1.4rem;
-
+            font-size: 28px;
             font-weight: 600;
         }
 
         .skipped-subtitle {
-            font-size: 0.9rem;
-
             margin-top: 8px;
-
-            opacity: 0.7;
+            color: #999;
+            font-size: 15px;
         }
 
-        /* PHOTO COUNTER */
-
-        .photo-counter {
-            position: absolute;
-
-            top: 35px;
-            right: 20px;
-
-            z-index: 10;
-
-            color: white;
-
-            background: rgba(0, 0, 0, 0.45);
-
-            padding: 5px 11px;
-
-            border-radius: 20px;
-
-            font-size: 0.85rem;
-        }
-
-        /* TEXT */
-
-        .text-section {
-
-            padding: 70px 45px 45px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-        }
-
-        .day-number {
-
-            color: #2563EB;
-
-            font-size: 1rem;
-
-            font-weight: 700;
-
-            letter-spacing: 1px;
-
-            text-transform: uppercase;
-        }
-
-        .text-section h1 {
-
-            color: #0F172A;
-
-            font-size: 2.4rem;
-
-            margin: 10px 0;
-
-            font-weight: 700;
-        }
-
-        .date {
-
-            color: #64748B;
-
-            margin-bottom: 30px;
-        }
-
-        .thought {
-
-            font-size: 1.25rem;
-
-            line-height: 1.7;
-
-            color: #334155;
-
-            font-style: italic;
-        }
-
-        .photography-credit {
-
-            font-size: 0.9rem;
-
-            color: #475569;
-
-            margin-top: 18px;
-
-            margin-bottom: 5px;
-        }
-
-        .location {
-
-            margin-top: 7px;
-
-            color: #64748B;
-
-            font-size: 0.95rem;
-        }
-
-        .location i {
-
-            color: #2563EB;
-        }
-
-        .day-progress {
-
-            margin-top: 35px;
-
-            color: #64748B;
-
-            font-size: 0.9rem;
-        }
-
-        /* NAVIGATION */
-
-        .navigation {
-
-            display: flex;
-
-            gap: 10px;
-
-            margin-top: 30px;
-        }
-
-        .nav-button {
-
-            border: none;
-
-            width: 45px;
-            height: 45px;
-
-            border-radius: 50%;
-
-            background: #eff6ff;
-
-            color: #2563EB;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-        }
-
-        .nav-button:hover {
-
-            background: #2563EB;
-
-            color: white;
-        }
-
-        /* BACK BUTTON */
-
-        .back-personal {
-
-            position: absolute;
-
-            top: 25px;
-            left: 25px;
-
-            z-index: 30;
-
-            color: white;
-
-            text-decoration: none;
-
-            background: rgba(0, 0, 0, 0.45);
-
-            padding: 8px 14px;
-
-            border-radius: 20px;
-
-            font-size: 0.9rem;
-        }
-
-        .back-personal:hover {
-
-            color: white;
-
-            background: rgba(0, 0, 0, 0.65);
-        }
-
-        /* TAP AREAS */
-
+        /* Tap zones */
         .tap-zone {
-
             position: absolute;
-
             top: 0;
             bottom: 0;
-
-            width: 25%;
-
+            width: 35%;
             z-index: 5;
         }
 
@@ -403,1140 +177,337 @@
             right: 0;
         }
 
-        /* MOBILE */
-
-        @media (max-width: 768px) {
-
-            body {
-
-                background: #000;
-
-                overflow: hidden;
-            }
-
-            .story-page {
-
-                padding: 0;
-
-                height: 100dvh;
-
-                min-height: 100dvh;
-
-                overflow: hidden;
-            }
-
-            .story-viewer {
-
-                width: 100%;
-
-                height: 100dvh;
-
-                min-height: 0;
-
-                border-radius: 0;
-
-                background: #000;
-            }
-
-            .story-content {
-
-                display: flex;
-
-                flex-direction: column;
-
-                height: 100%;
-
-                min-height: 0;
-            }
-
-            /* PHOTO */
-
-            .photo-section {
-
-                height: 70%;
-
-                min-height: 0;
-
-                flex-shrink: 0;
-
-                background: #000;
-            }
-
-            .story-photo {
-
-                width: 100%;
-
-                height: 100%;
-
-                object-fit: cover;
-            }
-
-            /* TEXT */
-
-            .text-section {
-
-                height: 30%;
-
-                min-height: 0;
-
-                flex-shrink: 0;
-
-                overflow-y: auto;
-
-                padding: 16px 20px 18px;
-
-                background:
-                    linear-gradient(
-                        to bottom,
-                        #ffffff 0%,
-                        #f8fafc 100%
-                    );
-
-                justify-content: flex-start;
-
-                border-radius: 20px 20px 0 0;
-
-                margin-top: -16px;
-
-                position: relative;
-
-                z-index: 2;
-
-                box-shadow:
-                    0 -10px 30px rgba(0, 0, 0, 0.28);
-
-                scrollbar-width: none;
-            }
-
-            .text-section::-webkit-scrollbar {
-                display: none;
-            }
-
-            .text-section h1 {
-
-                font-size: 1.35rem;
-
-                margin: 6px 0 4px;
-            }
-
-            .day-number {
-
-                font-size: 0.8rem;
-            }
-
-            .date {
-
-                margin-bottom: 8px;
-
-                font-size: 0.82rem;
-            }
-
-            .thought {
-
-                font-size: 0.92rem;
-
-                line-height: 1.4;
-
-                margin-bottom: 5px;
-            }
-
-            .photography-credit {
-
-                font-size: 0.9rem;
-
-                margin-top: 8px;
-
-                margin-bottom: 2px;
-            }
-
-            .location {
-
-                margin-top: 4px;
-
-                font-size: 0.9rem;
-            }
-
-            .day-progress {
-
-                margin-top: 7px;
-
-                font-size: 0.78rem;
-            }
-
-            .navigation {
-
-                display: none;
-            }
-
-            .back-personal {
-
-                top: 14px;
-
-                left: 14px;
-            }
-
-            .photo-counter {
-
-                top: 48px;
-
-                right: 14px;
-            }
-
+        /* Text section */
+        .text-section {
+            padding: 100px 55px 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background: #111;
         }
 
-    </style>
-
-</head>
-
-
-<body>
-
-<div class="story-page">
-
-    <div class="story-viewer">
-
-        <a href="index.html" class="back-personal">
-
-            <i class="bi bi-arrow-left"></i>
-            Personal
-
-        </a>
-
-
-        <div
-            class="story-progress"
-            id="storyProgress">
-        </div>
-
-
-        <div class="story-content">
-
-
-            <!-- PHOTO SECTION -->
-
-            <div class="photo-section">
-
-
-                <img
-                    id="storyPhoto"
-                    class="story-photo"
-                    src=""
-                    alt="100 Days Challenge">
-
-
-                <!-- SKIPPED DAY MESSAGE -->
-
-                <div
-                    id="skippedMessage"
-                    class="skipped-message">
-
-                    <div class="skipped-icon">
-                        ⏸
-                    </div>
-
-                    <div class="skipped-title">
-                        Day Skipped
-                    </div>
-
-                    <div class="skipped-subtitle">
-                        No entry for this day
-                    </div>
-
-                </div>
-
-
-                <!-- PHOTO COUNTER -->
-
-                <div
-                    class="photo-counter"
-                    id="photoCounter">
-
-                    1 / 1
-
-                </div>
-
-
-                <!-- TAP AREAS -->
-
-                <div
-                    class="tap-zone tap-left"
-                    onclick="previous()">
-                </div>
-
-                <div
-                    class="tap-zone tap-right"
-                    onclick="next()">
-                </div>
-
-
-            </div>
-
-
-            <!-- TEXT SECTION -->
-
-            <div class="text-section">
-
-
-                <div
-                    class="day-number"
-                    id="dayNumber">
-
-                    DAY 01 / 100
-
-                </div>
-
-
-                <h1 id="dayTitle">
-
-                    The Beginning
-
-                </h1>
-
-
-                <div
-                    class="date"
-                    id="dayDate">
-
-                    26 September 2026
-
-                </div>
-
-
-                <div
-                    class="thought"
-                    id="dayThought">
-
-                    Kahin pahunchne ke liye,
-                    kahin se nikalna bahut zaroori hai.
-
-                </div>
-
-
-                <div
-                    class="photography-credit"
-                    id="photographyCredit">
-
-                    📷 Photography:
-                    Mr. Rakesh, IIT Bhubaneswar
-
-                </div>
-
-
-                <div
-                    class="location"
-                    id="dayLocation">
-
-                    <i class="bi bi-geo-alt-fill"></i>
-
-                    IIT Bhubaneswar
-
-                </div>
-
-
-                <div
-                    class="day-progress"
-                    id="dayProgress">
-
-                    Day 1 of 100
-
-                </div>
-
-
-                <div class="navigation">
-
-
-                    <button
-                        class="nav-button"
-                        onclick="previous()">
-
-                        <i class="bi bi-arrow-left"></i>
-
-                    </button>
-
-
-                    <button
-                        class="nav-button"
-                        onclick="next()">
-
-                        <i class="bi bi-arrow-right"></i>
-
-                    </button>
-
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<script>
-
-
-/* =========================================
-   100 DAYS DATA
-========================================= */
-
-
-const days = [
-
-    {
-        day: 1,
-
-        date: "26 September 2026",
-
-        title: "The Beginning",
-
-        photos: [
-            "photos/day1.jpg"
-        ],
-
-        thought:
-            "Kahin pahunchne ke liye, kahin se nikalna bahut zaroori hai.",
-
-        photographer:
-            "Mr. Rakesh, IIT Bhubaneswar",
-
-        location:
-            "IIT Bhubaneswar"
-    },
-
-
-    {
-        day: 2,
-
-        date: "27 September 2026",
-
-        title: "A Skipped Day",
-
-        photos: [],
-
-        thought:
-            "Progress isn’t about being perfect; it’s about starting again.",
-
-        photographer:
-            "",
-
-        location:
-            ""
-    },
-
-
-    {
-        day: 3,
-
-        date: "28 September 2026",
-
-        title: "Restart",
-
-        photos: [
-            "photos/day3.jpg"
-        ],
-
-        thought:
-            "Don’t waste more days regretting one skipped day. Take 2–3 minutes to reflect, reset, and restart with higher energy. One missed day doesn’t have to affect the days that follow.",
-
-        photographer:
-            "Mr. Rakesh, IIT Bhubaneswar",
-
-        location:
-            "IIT Bhubaneswar"
-    }
-
-];
-
-
-/* =========================================
-   STATE
-========================================= */
-
-
-let currentDay = 0;
-
-let currentPhoto = 0;
-
-
-/* =========================================
-   ELEMENTS
-========================================= */
-
-
-const photo =
-    document.getElementById("storyPhoto");
-
-const skippedMessage =
-    document.getElementById("skippedMessage");
-
-const dayNumber =
-    document.getElementById("dayNumber");
-
-const dayTitle =
-    document.getElementById("dayTitle");
-
-const dayDate =
-    document.getElementById("dayDate");
-
-const dayThought =
-    document.getElementById("dayThought");
-
-const photographyCredit =
-    document.getElementById("photographyCredit");
-
-const dayLocation =
-    document.getElementById("dayLocation");
-
-const photoCounter =
-    document.getElementById("photoCounter");
-
-const dayProgress =
-    document.getElementById("dayProgress");
-
-const storyProgress =
-    document.getElementById("storyProgress");
-
-
-/* =========================================
-   RENDER
-========================================= */
-
-
-function render(direction = "next") {
-
-
-    const day =
-        days[currentDay];
-
-
-    /*
-       REMOVE PHOTO ANIMATION
-    */
-
-    photo.classList.remove(
-        "slide-next",
-        "slide-prev"
-    );
-
-
-    /*
-       PHOTO OR SKIPPED DAY
-    */
-
-
-    if (day.photos.length === 0) {
-
-
-        /* Hide photo */
-
-        photo.style.display = "none";
-
-
-        /* Show skipped message */
-
-        skippedMessage.style.display = "flex";
-
-
-        /* Counter */
-
-        photoCounter.textContent =
-            "SKIPPED";
-
-
-    } else {
-
-
-        /* Show photo */
-
-        photo.style.display = "block";
-
-
-        /* Hide skipped message */
-
-        skippedMessage.style.display = "none";
-
-
-        /* Set photo */
-
-        photo.src =
-            day.photos[currentPhoto];
-
-
-        /* Animation */
-
-        void photo.offsetWidth;
-
-
-        if (direction === "next") {
-
-            photo.classList.add(
-                "slide-next"
-            );
-
-        } else {
-
-            photo.classList.add(
-                "slide-prev"
-            );
-
+        .day-number {
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #aaa;
+            margin-bottom: 12px;
         }
 
-
-        /* Photo counter */
-
-        photoCounter.textContent =
-            `${currentPhoto + 1} / ${day.photos.length}`;
-
-    }
-
-
-    /*
-       DAY INFORMATION
-    */
-
-
-    dayNumber.textContent =
-        `DAY ${String(day.day).padStart(2, "0")} / 100`;
-
-
-    dayTitle.textContent =
-        day.title;
-
-
-    dayDate.textContent =
-        day.date;
-
-
-    dayThought.textContent =
-        day.thought;
-
-
-    /*
-       PHOTOGRAPHY CREDIT
-    */
-
-
-    if (day.photographer) {
-
-        photographyCredit.style.display =
-            "block";
-
-        photographyCredit.textContent =
-            `📷 Photography: ${day.photographer}`;
-
-    } else {
-
-        photographyCredit.style.display =
-            "none";
-
-    }
-
-
-    /*
-       LOCATION
-    */
-
-
-    if (day.location) {
-
-        dayLocation.style.display =
-            "block";
-
-        dayLocation.innerHTML =
-            `<i class="bi bi-geo-alt-fill"></i> ${day.location}`;
-
-    } else {
-
-        dayLocation.style.display =
-            "none";
-
-    }
-
-
-    /*
-       DAY COUNTER
-    */
-
-
-    dayProgress.textContent =
-        `Day ${day.day} of 100`;
-
-
-    /*
-       STORY PROGRESS
-    */
-
-    updateProgress();
-
-}
-
-
-/* =========================================
-   STORY PROGRESS
-========================================= */
-
-
-function updateProgress() {
-
-
-    storyProgress.innerHTML<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>100 Days Challenge | Khinil Sahu</title>
-
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet">
-
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="../../style.css">
-
-    <style>
-        * {
-            box-sizing: border-box;
+        .text-section h1 {
+            font-size: clamp(32px, 4vw, 55px);
+            line-height: 1.1;
+            margin: 0 0 10px;
         }
 
-        body {
-            margin: 0;
-            background: #0f172a;
+        .date {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 35px;
         }
 
-        .story-page {
-            min-height: 100vh;
-            padding: 90px 20px 30px;
+        .thought {
+            font-size: 21px;
+            line-height: 1.65;
+            color: #eee;
+            margin-bottom: 35px;
+        }
+
+        .photography-credit {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .location {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 35px;
+        }
+
+        .location i {
+            margin-right: 5px;
+        }
+
+        .day-progress {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation */
+        .navigation {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            border: 1px solid #444;
+            background: transparent;
+            color: #fff;
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
             display: flex;
             justify-content: center;
             align-items: center;
+
+            transition: 0.2s;
         }
 
-        .story-viewer {
-            width: min(1100px, 100%);
-            min-height: 680px;
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
         }
 
-        .story-progress {
-            position: absolute;
-            top: 18px;
-            left: 20px;
-            right: 20px;
-            z-index: 20;
-            display: flex;
-            gap: 5px;
-        }
-
-        .progress-segment {
-            height: 4px;
-            flex: 1;
-            background: rgba(255, 255, 255, 0.35);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-segment.active {
-            background: #ffffff;
-        }
-
-        .story-content {
-            min-height: 680px;
-            display: grid;
-            grid-template-columns: 1.45fr 0.75fr;
-        }
-
-        .photo-section {
-            background: #111827;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            min-height: 680px;
-            overflow: hidden;
-        }
-
-        .story-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.35s ease, opacity 0.25s ease;
-        }
-
-        .story-photo.slide-next {
+        /* Animations */
+        .slide-next {
             animation: slideNext 0.35s ease;
         }
 
-        .story-photo.slide-prev {
+        .slide-prev {
             animation: slidePrev 0.35s ease;
         }
 
         @keyframes slideNext {
             from {
+                opacity: 0;
                 transform: translateX(35px);
-                opacity: 0.3;
             }
 
             to {
-                transform: translateX(0);
                 opacity: 1;
+                transform: translateX(0);
             }
         }
 
         @keyframes slidePrev {
             from {
+                opacity: 0;
                 transform: translateX(-35px);
-                opacity: 0.3;
             }
 
             to {
-                transform: translateX(0);
                 opacity: 1;
+                transform: translateX(0);
             }
         }
 
-        .photo-counter {
-            position: absolute;
-            top: 35px;
-            right: 20px;
-            z-index: 10;
-            color: white;
-            background: rgba(0, 0, 0, 0.45);
-            padding: 5px 11px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .text-section {
-            padding: 70px 45px 45px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .day-number {
-            color: #2563EB;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .text-section h1 {
-            color: #0F172A;
-            font-size: 2.4rem;
-            margin: 10px 0;
-            font-weight: 700;
-        }
-
-        .date {
-            color: #64748B;
-            margin-bottom: 30px;
-        }
-
-        .thought {
-            font-size: 1.25rem;
-            line-height: 1.7;
-            color: #334155;
-            font-style: italic;
-        }
-
-        .location {
-            margin-top: 25px;
-            color: #64748B;
-            font-size: 0.95rem;
-        }
-
-        .location i {
-            color: #2563EB;
-        }
-
-        .day-progress {
-            margin-top: 35px;
-            color: #64748B;
-            font-size: 0.9rem;
-        }
-
-        .navigation {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .nav-button {
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: #eff6ff;
-            color: #2563EB;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .nav-button:hover {
-            background: #2563EB;
-            color: white;
-        }
-
-        .back-personal {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            z-index: 30;
-            color: white;
-            text-decoration: none;
-            background: rgba(0, 0, 0, 0.45);
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .back-personal:hover {
-            color: white;
-            background: rgba(0, 0, 0, 0.65);
-        }
-
-        .tap-zone {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 25%;
-            z-index: 5;
-        }
-
-        .tap-left {
-            left: 0;
-        }
-
-        .tap-right {
-            right: 0;
-        }
-
+        /* Mobile */
         @media (max-width: 768px) {
 
-    body {
-        background: #000;
-        overflow: hidden;
-    }
+            .story-content {
+                display: flex;
+                flex-direction: column;
+            }
 
-    .story-page {
-        padding: 0;
-        height: 100dvh;
-        min-height: 100dvh;
-        overflow: hidden;
-    }
+            .photo-section {
+                min-height: 65vh;
+                height: 65vh;
+            }
 
-    .story-viewer {
-        width: 100%;
-        height: 100dvh;
-        min-height: 0;
-        border-radius: 0;
-        background: #000;
-    }
+            .story-photo {
+                object-fit: cover;
+            }
 
-    .story-content {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        min-height: 0;
-    }
+            .story-progress {
+                width: 70%;
+                top: 12px;
+            }
 
-    /* 70% PHOTO */
+            .back-personal {
+                top: 25px;
+                left: 15px;
+                font-size: 13px;
+            }
 
-    .photo-section {
-        height: 70%;
-        min-height: 0;
-        flex-shrink: 0;
-        background: #000;
-    }
+            .photo-counter {
+                top: 48px;
+                right: 15px;
+                font-size: 12px;
+            }
 
-    .story-photo {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: opacity 0.35s ease,
-                    transform 0.45s ease;
-    }
+            .text-section {
+                min-height: 35vh;
+                padding: 25px 22px 35px;
+                justify-content: flex-start;
+            }
 
-    /* 30% TEXT */
+            .day-number {
+                font-size: 12px;
+            }
 
-    .text-section {
-        height: 30%;
-        min-height: 0;
-        flex-shrink: 0;
-        overflow-y: auto;
+            .text-section h1 {
+                font-size: 30px;
+            }
 
-        padding: 16px 20px 18px;
+            .date {
+                margin-bottom: 20px;
+            }
 
-        background: linear-gradient(
-            to bottom,
-            #ffffff 0%,
-            #f8fafc 100%
-        );
+            .thought {
+                font-size: 17px;
+                line-height: 1.55;
+                margin-bottom: 22px;
+            }
 
-        justify-content: flex-start;
+            .photography-credit {
+                font-size: 13px;
+            }
 
-        border-radius: 20px 20px 0 0;
-        margin-top: -16px;
+            .location {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
 
-        position: relative;
-        z-index: 2;
+            .day-progress {
+                display: none;
+            }
 
-        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.28);
+            .navigation {
+                display: none;
+            }
 
-        animation: textSlideUp 0.45s ease;
-
-        scrollbar-width: none;
-    }
-
-    .text-section::-webkit-scrollbar {
-        display: none;
-    }
-
-    @keyframes textSlideUp {
-
-        from {
-            opacity: 0;
-            transform: translateY(18px);
+            .skipped-title {
+                font-size: 25px;
+            }
         }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-    }
-
-    .text-section h1 {
-        font-size: 1.35rem;
-        margin: 6px 0 4px;
-    }
-
-    .day-number {
-        font-size: 0.8rem;
-    }
-
-    .date {
-        margin-bottom: 8px;
-        font-size: 0.82rem;
-    }
-
-    .thought {
-        font-size: 0.92rem;
-        line-height: 1.4;
-        margin-bottom: 5px;
-    }
-
-    .location {
-        margin-top: 7px;
-        font-size: 0.82rem;
-    }
-
-    .day-progress {
-        margin-top: 7px;
-        font-size: 0.78rem;
-    }
-
-    .navigation {
-        display: none;
-    }
-
-    .back-personal {
-        top: 14px;
-        left: 14px;
-    }
-
-    .photo-counter {
-        top: 48px;
-        right: 14px;
-    }
-
-}
     </style>
 </head>
 
+
 <body>
 
-<div class="story-page">
+    <div class="story-page">
 
-    <div class="story-viewer">
+        <div class="story-viewer">
 
-        <a href="index.html" class="back-personal">
-            <i class="bi bi-arrow-left"></i> Personal
-        </a>
+            <!-- Back -->
+            <a href="index.html" class="back-personal">
+                <i class="bi bi-arrow-left"></i>
+                Personal
+            </a>
 
-        <div class="story-progress" id="storyProgress"></div>
 
-        <div class="story-content">
+            <!-- Progress -->
+            <div id="storyProgress" class="story-progress"></div>
 
-            <div class="photo-section">
 
-                <img
-                    id="storyPhoto"
-                    class="story-photo"
-                    src=""
-                    alt="100 Days Challenge">
+            <div class="story-content">
 
-                <div class="photo-counter" id="photoCounter">
-                    1 / 1
+                <!-- PHOTO SIDE -->
+                <div class="photo-section" id="photoSection">
+
+                    <img
+                        id="storyPhoto"
+                        class="story-photo"
+                        src=""
+                        alt="100 Days Challenge">
+
+                    <!-- Skipped Day -->
+                    <div
+                        id="skippedMessage"
+                        class="skipped-message">
+
+                        <div class="skipped-icon">
+                            ⏸
+                        </div>
+
+                        <div class="skipped-title">
+                            Day Skipped
+                        </div>
+
+                        <div class="skipped-subtitle">
+                            No entry for this day
+                        </div>
+
+                    </div>
+
+
+                    <!-- Photo counter -->
+                    <div
+                        id="photoCounter"
+                        class="photo-counter">
+                    </div>
+
+
+                    <!-- Tap areas -->
+                    <div
+                        class="tap-zone tap-left"
+                        onclick="previous()">
+                    </div>
+
+                    <div
+                        class="tap-zone tap-right"
+                        onclick="next()">
+                    </div>
+
                 </div>
 
-                <div class="tap-zone tap-left" onclick="previous()"></div>
-                <div class="tap-zone tap-right" onclick="next()"></div>
 
-            </div>
+                <!-- TEXT SIDE -->
+                <div class="text-section">
 
-            <div class="text-section">
+                    <div
+                        id="dayNumber"
+                        class="day-number">
+                    </div>
 
-                <div class="day-number" id="dayNumber">
-                    DAY 01 / 100
-                </div>
+                    <h1 id="dayTitle"></h1>
 
-                <h1 id="dayTitle">
-                    The Beginning
-                </h1>
+                    <div
+                        id="dayDate"
+                        class="date">
+                    </div>
 
-                <div class="date" id="dayDate">
-                    26 September 2026
-                </div>
+                    <div
+                        id="dayThought"
+                        class="thought">
+                    </div>
 
-<div class="thought" id="dayThought">
-    Kahin pahunchne ke liye, kahin se nikalna bahut zaroori hai.
-</div>
+                    <div
+                        id="photographyCredit"
+                        class="photography-credit">
+                    </div>
 
-<div style="font-size: 0.9rem !important; color: #475569 !important; margin-top: 18px; margin-bottom: 5px; font-style: normal;">
-    📷 Photography: Mr. Rakesh, IIT Bhubaneswar.
-</div>
-<div class="location" id="dayLocation">
-    <i class="bi bi-geo-alt-fill"></i>
-    IIT Bhubaneswar
-</div>
-                <div class="day-progress" id="dayProgress">
-                    Day 1 of 100
-                </div>
+                    <div
+                        id="dayLocation"
+                        class="location">
+                    </div>
 
-                <div class="navigation">
+                    <div
+                        id="dayProgress"
+                        class="day-progress">
+                    </div>
 
-                    <button class="nav-button" onclick="previous()">
-                        <i class="bi bi-arrow-left"></i>
-                    </button>
 
-                    <button class="nav-button" onclick="next()">
-                        <i class="bi bi-arrow-right"></i>
-                    </button>
+                    <!-- Navigation -->
+                    <div class="navigation">
+
+                        <button
+                            class="nav-btn"
+                            onclick="previous()"
+                            aria-label="Previous">
+
+                            <i class="bi bi-chevron-left"></i>
+
+                        </button>
+
+
+                        <button
+                            class="nav-btn"
+                            onclick="next()"
+                            aria-label="Next">
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -1546,378 +517,542 @@ function updateProgress() {
 
     </div>
 
-</div>
 
-<script>
+    <script>
 
-const days = [
+        /* =========================
+           DAYS DATA
+        ========================= */
 
-    {
-        day: 1,
-        date: "26 September 2026",
-        title: "The Beginning",
+        const days = [
 
-        photos: [
-            "photos/day1.jpg"
-        ],
+            {
+                day: 1,
+                date: "26 September 2026",
+                title: "The Beginning",
 
-        thought:
-            "Kahin pahunchne ke liye, kahin se nikalna bahut zaroori hai.",
+                photos: [
+                    "photos/day1.jpg"
+                ],
 
-        location: "IIT Bhubaneswar"
-    },
+                thought:
+                    "Kahin pahunchne ke liye, kahin se nikalna bahut zaroori hai.",
 
-    {
-        day: 2,
-        date: "27 September 2026",
-        title: "A Skipped Day",
+                photographer:
+                    "Mr. Rakesh, IIT Bhubaneswar",
 
-        photos: [],
-
-        thought:
-            "Progress isn’t about being perfect; it’s about starting again.",
-
-        location: ""
-    },
-
-    {
-        day: 3,
-        date: "28 September 2026",
-        title: "Restart",
-
-        photos: [
-            "photos/day3.jpg"
-        ],
-
-        thought:
-            "Don’t waste more days regretting one skipped day. Take 2–3 minutes to reflect, reset, and restart with higher energy. One missed day doesn’t have to affect the days that follow.",
-
-        location: "IIT Bhubaneswar"
-    }
-
-];
+                location:
+                    "IIT Bhubaneswar"
+            },
 
 
-let currentDay = 0;
-let currentPhoto = 0;
+            {
+                day: 2,
+                date: "27 September 2026",
+                title: "A Skipped Day",
+
+                photos: [],
+
+                thought:
+                    "Progress isn’t about being perfect; it’s about starting again.",
+
+                photographer:
+                    "",
+
+                location:
+                    ""
+            },
 
 
-const photo = document.getElementById("storyPhoto");
-const dayNumber = document.getElementById("dayNumber");
-const dayTitle = document.getElementById("dayTitle");
-const dayDate = document.getElementById("dayDate");
-const dayThought = document.getElementById("dayThought");
-const dayLocation = document.getElementById("dayLocation");
-const photoCounter = document.getElementById("photoCounter");
-const dayProgress = document.getElementById("dayProgress");
-const storyProgress = document.getElementById("storyProgress");
+            {
+                day: 3,
+                date: "28 September 2026",
+                title: "Restart",
+
+                photos: [
+                    "photos/day3.jpg"
+                ],
+
+                thought:
+                    "Don’t waste more days regretting one skipped day. Take 2–3 minutes to reflect, reset, and restart with higher energy. One missed day doesn’t have to affect the days that follow.",
+
+                photographer:
+                    "Mr. Rakesh, IIT Bhubaneswar",
+
+                location:
+                    "IIT Bhubaneswar"
+            }
+
+        ];
 
 
-function render(direction = "next") {
+        /* =========================
+           VARIABLES
+        ========================= */
 
-    const day = days[currentDay];
-
-    photo.classList.remove("slide-next", "slide-prev");
-
-    void photo.offsetWidth;
+        let currentDay = 0;
+        let currentPhoto = 0;
 
 
-    /* SKIPPED DAY */
+        const storyPhoto =
+            document.getElementById("storyPhoto");
 
- if (day.photos.length === 0) {
+        const skippedMessage =
+            document.getElementById("skippedMessage");
 
-    photo.style.display = "none";
+        const photoCounter =
+            document.getElementById("photoCounter");
 
-    const skipped = document.createElement("div");
+        const dayNumber =
+            document.getElementById("dayNumber");
 
-    skipped.className = "skipped-message";
+        const dayTitle =
+            document.getElementById("dayTitle");
 
-    skipped.style.cssText = `
-        color: white;
-        text-align: center;
-        padding: 30px;
-        font-size: 1.2rem;
-    `;
+        const dayDate =
+            document.getElementById("dayDate");
 
-    skipped.innerHTML = `
-        <div style="font-size: 3rem; margin-bottom: 15px;">
-            ⏸
-        </div>
+        const dayThought =
+            document.getElementById("dayThought");
 
-        <div style="font-size: 1.4rem; font-weight: 600;">
-            Day Skipped
-        </div>
+        const photographyCredit =
+            document.getElementById("photographyCredit");
 
-        <div style="font-size: 0.9rem; margin-top: 8px; opacity: 0.7;">
-            No entry for this day
-        </div>
-    `;
+        const dayLocation =
+            document.getElementById("dayLocation");
 
-    document.querySelector(".photo-section").appendChild(skipped);
+        const dayProgress =
+            document.getElementById("dayProgress");
 
-} else {
+        const storyProgress =
+            document.getElementById("storyProgress");
 
-    photo.style.display = "block";
 
-    const oldSkipped =
-        document.querySelector(".skipped-message");
+        /* =========================
+           RENDER DAY
+        ========================= */
 
-    if (oldSkipped) {
-        oldSkipped.remove();
-    }
+        function render(direction = "next") {
 
-    photo.src = day.photos[currentPhoto];
+            const day = days[currentDay];
 
-    // rest of your code...
-}
-        if (direction === "next") {
-            photo.classList.add("slide-next");
-        } else {
-            photo.classList.add("slide-prev");
+
+            /* Remove old animation */
+            storyPhoto.classList.remove(
+                "slide-next",
+                "slide-prev"
+            );
+
+
+            /* Day information */
+
+            dayNumber.textContent =
+                "DAY " +
+                String(day.day).padStart(2, "0") +
+                " / 100";
+
+            dayTitle.textContent =
+                day.title;
+
+            dayDate.textContent =
+                day.date;
+
+            dayThought.textContent =
+                day.thought;
+
+            dayProgress.textContent =
+                "Day " +
+                day.day +
+                " of 100";
+
+
+            /* =========================
+               PHOTO DAY
+            ========================= */
+
+            if (day.photos.length > 0) {
+
+                storyPhoto.style.display =
+                    "block";
+
+                skippedMessage.style.display =
+                    "none";
+
+
+                storyPhoto.src =
+                    day.photos[currentPhoto];
+
+
+                photoCounter.textContent =
+                    (currentPhoto + 1) +
+                    " / " +
+                    day.photos.length;
+
+
+                if (direction === "next") {
+
+                    storyPhoto.classList.add(
+                        "slide-next"
+                    );
+
+                } else {
+
+                    storyPhoto.classList.add(
+                        "slide-prev"
+                    );
+
+                }
+
+
+                /* Photography */
+
+                if (day.photographer) {
+
+                    photographyCredit.style.display =
+                        "block";
+
+                    photographyCredit.textContent =
+                        "📷 Photography: " +
+                        day.photographer;
+
+                } else {
+
+                    photographyCredit.style.display =
+                        "none";
+
+                }
+
+
+                /* Location */
+
+                if (day.location) {
+
+                    dayLocation.style.display =
+                        "block";
+
+                    dayLocation.innerHTML =
+                        '<i class="bi bi-geo-alt-fill"></i> ' +
+                        day.location;
+
+                } else {
+
+                    dayLocation.style.display =
+                        "none";
+
+                }
+
+            }
+
+
+            /* =========================
+               SKIPPED DAY
+            ========================= */
+
+            else {
+
+                storyPhoto.style.display =
+                    "none";
+
+                storyPhoto.removeAttribute("src");
+
+
+                skippedMessage.style.display =
+                    "flex";
+
+
+                photoCounter.textContent =
+                    "SKIPPED";
+
+
+                photographyCredit.style.display =
+                    "none";
+
+                dayLocation.style.display =
+                    "none";
+
+            }
+
+
+            updateProgress();
         }
 
-        photoCounter.textContent =
-            `${currentPhoto + 1} / ${day.photos.length}`;
 
-        updateProgress();
-    }
+        /* =========================
+           STORY PROGRESS
+        ========================= */
 
+        function updateProgress() {
 
-    dayNumber.textContent =
-        `DAY ${String(day.day).padStart(2, "0")} / 100`;
+            storyProgress.innerHTML = "";
 
-    dayTitle.textContent = day.title;
+            const day = days[currentDay];
 
-    dayDate.textContent = day.date;
-
-    dayThought.textContent = day.thought;
+            const count =
+                Math.max(day.photos.length, 1);
 
 
-    /* LOCATION */
+            for (
+                let i = 0;
+                i < count;
+                i++
+            ) {
 
-    if (day.location) {
+                const segment =
+                    document.createElement("div");
 
-        dayLocation.style.display = "block";
-
-        dayLocation.innerHTML =
-            `<i class="bi bi-geo-alt-fill"></i> ${day.location}`;
-
-    } else {
-
-        dayLocation.style.display = "none";
-
-    }
+                segment.className =
+                    "progress-segment";
 
 
-    dayProgress.textContent =
-        `Day ${day.day} of 100`;
-}
+                if (
+                    day.photos.length === 0 ||
+                    i === currentPhoto
+                ) {
+
+                    segment.classList.add(
+                        "active"
+                    );
+
+                }
 
 
-/* STORY PROGRESS */
-
-function updateProgress() {
-
-    storyProgress.innerHTML = "";
-
-    const day = days[currentDay];
-
-    if (day.photos.length === 0) {
-        const segment = document.createElement("div");
-        segment.className = "progress-segment active";
-        storyProgress.appendChild(segment);
-        return;
-    }
-
-    day.photos.forEach((_, index) => {
-
-        const segment = document.createElement("div");
-
-        segment.className = "progress-segment";
-
-        if (index <= currentPhoto) {
-            segment.classList.add("active");
+                storyProgress.appendChild(
+                    segment
+                );
+            }
         }
 
-        storyProgress.appendChild(segment);
 
-    });
-}
+        /* =========================
+           NEXT
+        ========================= */
 
+        function next() {
 
-function next() {
-
-    const day = days[currentDay];
-
-    if (
-        day.photos.length > 0 &&
-        currentPhoto < day.photos.length - 1
-    ) {
-
-        currentPhoto++;
-
-        render("next");
-
-        return;
-    }
-
-    if (currentDay < days.length - 1) {
-
-        currentDay++;
-
-        currentPhoto = 0;
-
-        render("next");
-    }
-}
+            const day = days[currentDay];
 
 
-function previous() {
+            /* More photos in same day */
 
-    if (currentPhoto > 0) {
+            if (
+                day.photos.length > 0 &&
+                currentPhoto <
+                day.photos.length - 1
+            ) {
 
-        currentPhoto--;
+                currentPhoto++;
 
-        render("prev");
+            }
 
-        return;
-    }
 
-    if (currentDay > 0) {
+            /* Next day */
 
-        currentDay--;
+            else if (
+                currentDay <
+                days.length - 1
+            ) {
 
-        const previousDay = days[currentDay];
+                currentDay++;
+                currentPhoto = 0;
 
-        if (previousDay.photos.length > 0) {
+            }
 
-            currentPhoto =
-                previousDay.photos.length - 1;
 
-        } else {
-
-            currentPhoto = 0;
+            render("next");
         }
 
-        render("prev");
-    }
-}
+
+        /* =========================
+           PREVIOUS
+        ========================= */
+
+        function previous() {
+
+            /* Previous photo */
+
+            if (currentPhoto > 0) {
+
+                currentPhoto--;
+
+            }
 
 
-document.addEventListener("keydown", function(event) {
+            /* Previous day */
 
-    if (event.key === "ArrowRight") {
-        next();
-    }
+            else if (currentDay > 0) {
 
-    if (event.key === "ArrowLeft") {
-        previous();
-    }
-
-});
+                currentDay--;
 
 
-let touchStartX = 0;
-let touchStartY = 0;
+                if (
+                    days[currentDay].photos.length > 0
+                ) {
+
+                    currentPhoto =
+                        days[currentDay].photos.length - 1;
+
+                } else {
+
+                    currentPhoto = 0;
+
+                }
+
+            }
 
 
-document.addEventListener("touchstart", function(event) {
-
-    touchStartX =
-        event.changedTouches[0].screenX;
-
-    touchStartY =
-        event.changedTouches[0].screenY;
-
-}, { passive: true });
-
-
-document.addEventListener("touchend", function(event) {
-
-    const touchEndX =
-        event.changedTouches[0].screenX;
-
-    const touchEndY =
-        event.changedTouches[0].screenY;
-
-    const diffX =
-        touchEndX - touchStartX;
-
-    const diffY =
-        touchEndY - touchStartY;
-
-
-    if (
-        Math.abs(diffX) > 50 &&
-        Math.abs(diffX) > Math.abs(diffY)
-    ) {
-
-        if (diffX < 0) {
-
-            next();
-
-        } else {
-
-            previous();
-
+            render("prev");
         }
 
-    }
 
-}, { passive: true });
+        /* =========================
+           KEYBOARD
+        ========================= */
 
+        document.addEventListener(
+            "keydown",
+            function (event) {
 
-let mouseStartX = 0;
-let mouseDown = false;
+                if (event.key === "ArrowRight") {
 
+                    next();
 
-document
-    .querySelector(".photo-section")
-    .addEventListener("mousedown", function(event) {
+                }
 
-        mouseDown = true;
+                if (event.key === "ArrowLeft") {
 
-        mouseStartX =
-            event.clientX;
+                    previous();
 
-    });
+                }
 
-
-document.addEventListener("mouseup", function(event) {
-
-    if (!mouseDown) return;
-
-    mouseDown = false;
-
-    const diff =
-        event.clientX - mouseStartX;
+            }
+        );
 
 
-    if (Math.abs(diff) > 60) {
+        /* =========================
+           TOUCH SWIPE
+        ========================= */
 
-        if (diff < 0) {
+        let touchStartX = 0;
+        let touchEndX = 0;
 
-            next();
 
-        } else {
+        const photoSection =
+            document.getElementById(
+                "photoSection"
+            );
 
-            previous();
+
+        photoSection.addEventListener(
+            "touchstart",
+            function (event) {
+
+                touchStartX =
+                    event.changedTouches[0].screenX;
+
+            },
+            { passive: true }
+        );
+
+
+        photoSection.addEventListener(
+            "touchend",
+            function (event) {
+
+                touchEndX =
+                    event.changedTouches[0].screenX;
+
+                handleSwipe();
+
+            },
+            { passive: true }
+        );
+
+
+        function handleSwipe() {
+
+            const difference =
+                touchStartX - touchEndX;
+
+
+            if (Math.abs(difference) < 50) {
+                return;
+            }
+
+
+            if (difference > 0) {
+
+                next();
+
+            } else {
+
+                previous();
+
+            }
 
         }
 
-    }
 
-});
+        /* =========================
+           MOUSE DRAG
+        ========================= */
+
+        let mouseStartX = 0;
+        let mouseDown = false;
 
 
-render();
+        photoSection.addEventListener(
+            "mousedown",
+            function (event) {
 
-</script>
+                mouseDown = true;
+                mouseStartX = event.clientX;
+
+            }
+        );
+
+
+        photoSection.addEventListener(
+            "mouseup",
+            function (event) {
+
+                if (!mouseDown) {
+                    return;
+                }
+
+                mouseDown = false;
+
+
+                const difference =
+                    mouseStartX - event.clientX;
+
+
+                if (Math.abs(difference) < 50) {
+                    return;
+                }
+
+
+                if (difference > 0) {
+
+                    next();
+
+                } else {
+
+                    previous();
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           START
+        ========================= */
+
+        render();
+
+    </script>
 
 </body>
 
-</html>
-
-
-</body>
 </html>
