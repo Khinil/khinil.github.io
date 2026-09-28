@@ -1723,31 +1723,20 @@ function updateProgress() {
     const day = days[currentDay];
 
     if (day.photos.length === 0) {
-
-        const segment =
-            document.createElement("div");
-
-        segment.className =
-            "progress-segment active";
-
+        const segment = document.createElement("div");
+        segment.className = "progress-segment active";
         storyProgress.appendChild(segment);
-
         return;
     }
 
-
     day.photos.forEach((_, index) => {
 
-        const segment =
-            document.createElement("div");
+        const segment = document.createElement("div");
 
-        segment.className =
-            "progress-segment";
+        segment.className = "progress-segment";
 
         if (index <= currentPhoto) {
-
             segment.classList.add("active");
-
         }
 
         storyProgress.appendChild(segment);
@@ -1756,14 +1745,9 @@ function updateProgress() {
 }
 
 
-/* NEXT */
-
 function next() {
 
     const day = days[currentDay];
-
-
-    /* If current day has multiple photos */
 
     if (
         day.photos.length > 0 &&
@@ -1772,43 +1756,38 @@ function next() {
 
         currentPhoto++;
 
+        render("next");
+
+        return;
     }
 
-    /* Move to next day */
-
-    else if (currentDay < days.length - 1) {
+    if (currentDay < days.length - 1) {
 
         currentDay++;
 
         currentPhoto = 0;
 
+        render("next");
     }
-
-
-    render("next");
 }
 
 
-/* PREVIOUS */
-
 function previous() {
-
-    /* Previous photo */
 
     if (currentPhoto > 0) {
 
         currentPhoto--;
 
+        render("prev");
+
+        return;
     }
 
-    /* Previous day */
-
-    else if (currentDay > 0) {
+    if (currentDay > 0) {
 
         currentDay--;
 
-        const previousDay =
-            days[currentDay];
+        const previousDay = days[currentDay];
 
         if (previousDay.photos.length > 0) {
 
@@ -1818,99 +1797,75 @@ function previous() {
         } else {
 
             currentPhoto = 0;
-
         }
 
+        render("prev");
     }
-
-
-    render("prev");
 }
 
 
-/* KEYBOARD NAVIGATION */
+document.addEventListener("keydown", function(event) {
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+    if (event.key === "ArrowRight") {
+        next();
+    }
 
-        if (event.key === "ArrowRight") {
+    if (event.key === "ArrowLeft") {
+        previous();
+    }
+
+});
+
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+
+document.addEventListener("touchstart", function(event) {
+
+    touchStartX =
+        event.changedTouches[0].screenX;
+
+    touchStartY =
+        event.changedTouches[0].screenY;
+
+}, { passive: true });
+
+
+document.addEventListener("touchend", function(event) {
+
+    const touchEndX =
+        event.changedTouches[0].screenX;
+
+    const touchEndY =
+        event.changedTouches[0].screenY;
+
+    const diffX =
+        touchEndX - touchStartX;
+
+    const diffY =
+        touchEndY - touchStartY;
+
+
+    if (
+        Math.abs(diffX) > 50 &&
+        Math.abs(diffX) > Math.abs(diffY)
+    ) {
+
+        if (diffX < 0) {
 
             next();
 
-        }
-
-        if (event.key === "ArrowLeft") {
+        } else {
 
             previous();
 
         }
 
     }
-);
 
+}, { passive: true });
 
-/* TOUCH SWIPE */
-
-let touchStartX = 0;
-let touchStartY = 0;
-
-
-document.addEventListener(
-    "touchstart",
-    function(event) {
-
-        touchStartX =
-            event.changedTouches[0].screenX;
-
-        touchStartY =
-            event.changedTouches[0].screenY;
-
-    },
-    { passive: true }
-);
-
-
-document.addEventListener(
-    "touchend",
-    function(event) {
-
-        const touchEndX =
-            event.changedTouches[0].screenX;
-
-        const touchEndY =
-            event.changedTouches[0].screenY;
-
-        const diffX =
-            touchEndX - touchStartX;
-
-        const diffY =
-            touchEndY - touchStartY;
-
-
-        if (
-            Math.abs(diffX) > 50 &&
-            Math.abs(diffX) > Math.abs(diffY)
-        ) {
-
-            if (diffX < 0) {
-
-                next();
-
-            } else {
-
-                previous();
-
-            }
-
-        }
-
-    },
-    { passive: true }
-);
-
-
-/* MOUSE DRAG */
 
 let mouseStartX = 0;
 let mouseDown = false;
@@ -1918,54 +1873,50 @@ let mouseDown = false;
 
 document
     .querySelector(".photo-section")
-    .addEventListener(
-        "mousedown",
-        function(event) {
+    .addEventListener("mousedown", function(event) {
 
-            mouseDown = true;
+        mouseDown = true;
 
-            mouseStartX =
-                event.clientX;
+        mouseStartX =
+            event.clientX;
 
-        }
-    );
+    });
 
 
-document.addEventListener(
-    "mouseup",
-    function(event) {
+document.addEventListener("mouseup", function(event) {
 
-        if (!mouseDown) return;
+    if (!mouseDown) return;
 
-        mouseDown = false;
+    mouseDown = false;
 
-        const diff =
-            event.clientX - mouseStartX;
+    const diff =
+        event.clientX - mouseStartX;
 
 
-        if (Math.abs(diff) > 60) {
+    if (Math.abs(diff) > 60) {
 
-            if (diff < 0) {
+        if (diff < 0) {
 
-                next();
+            next();
 
-            } else {
+        } else {
 
-                previous();
-
-            }
+            previous();
 
         }
 
     }
-);
 
+});
 
-/* START */
 
 render();
 
 </script>
+
+</body>
+
+</html>
 
 
 </body>
