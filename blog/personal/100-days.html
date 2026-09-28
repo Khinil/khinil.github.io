@@ -2,6 +2,1090 @@
 <html lang="en">
 
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>100 Days Challenge | Khinil Sahu</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #0f172a;
+        }
+
+        .story-page {
+            min-height: 100vh;
+            padding: 90px 20px 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .story-viewer {
+            width: min(1100px, 100%);
+            min-height: 680px;
+
+            background: #ffffff;
+
+            border-radius: 20px;
+            overflow: hidden;
+
+            position: relative;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        /* STORY PROGRESS */
+
+        .story-progress {
+            position: absolute;
+
+            top: 18px;
+            left: 20px;
+            right: 20px;
+
+            z-index: 20;
+
+            display: flex;
+            gap: 5px;
+        }
+
+        .progress-segment {
+            height: 4px;
+
+            flex: 1;
+
+            background: rgba(255, 255, 255, 0.35);
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .progress-segment.active {
+            background: #ffffff;
+        }
+
+        /* MAIN LAYOUT */
+
+        .story-content {
+            min-height: 680px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.45fr 0.75fr;
+        }
+
+        /* PHOTO */
+
+        .photo-section {
+            background: #111827;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            min-height: 680px;
+
+            overflow: hidden;
+        }
+
+        .story-photo {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.35s ease,
+                opacity 0.25s ease;
+        }
+
+        .story-photo.slide-next {
+            animation: slideNext 0.35s ease;
+        }
+
+        .story-photo.slide-prev {
+            animation: slidePrev 0.35s ease;
+        }
+
+        @keyframes slideNext {
+
+            from {
+                transform: translateX(35px);
+                opacity: 0.3;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+        }
+
+        @keyframes slidePrev {
+
+            from {
+                transform: translateX(-35px);
+                opacity: 0.3;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+        }
+
+        /* SKIPPED DAY */
+
+        .skipped-message {
+            position: absolute;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            color: white;
+
+            background: #111827;
+
+            z-index: 3;
+        }
+
+        .skipped-icon {
+            font-size: 3rem;
+
+            margin-bottom: 15px;
+        }
+
+        .skipped-title {
+            font-size: 1.4rem;
+
+            font-weight: 600;
+        }
+
+        .skipped-subtitle {
+            font-size: 0.9rem;
+
+            margin-top: 8px;
+
+            opacity: 0.7;
+        }
+
+        /* PHOTO COUNTER */
+
+        .photo-counter {
+            position: absolute;
+
+            top: 35px;
+            right: 20px;
+
+            z-index: 10;
+
+            color: white;
+
+            background: rgba(0, 0, 0, 0.45);
+
+            padding: 5px 11px;
+
+            border-radius: 20px;
+
+            font-size: 0.85rem;
+        }
+
+        /* TEXT */
+
+        .text-section {
+
+            padding: 70px 45px 45px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .day-number {
+
+            color: #2563EB;
+
+            font-size: 1rem;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .text-section h1 {
+
+            color: #0F172A;
+
+            font-size: 2.4rem;
+
+            margin: 10px 0;
+
+            font-weight: 700;
+        }
+
+        .date {
+
+            color: #64748B;
+
+            margin-bottom: 30px;
+        }
+
+        .thought {
+
+            font-size: 1.25rem;
+
+            line-height: 1.7;
+
+            color: #334155;
+
+            font-style: italic;
+        }
+
+        .photography-credit {
+
+            font-size: 0.9rem;
+
+            color: #475569;
+
+            margin-top: 18px;
+
+            margin-bottom: 5px;
+        }
+
+        .location {
+
+            margin-top: 7px;
+
+            color: #64748B;
+
+            font-size: 0.95rem;
+        }
+
+        .location i {
+
+            color: #2563EB;
+        }
+
+        .day-progress {
+
+            margin-top: 35px;
+
+            color: #64748B;
+
+            font-size: 0.9rem;
+        }
+
+        /* NAVIGATION */
+
+        .navigation {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 30px;
+        }
+
+        .nav-button {
+
+            border: none;
+
+            width: 45px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            background: #eff6ff;
+
+            color: #2563EB;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .nav-button:hover {
+
+            background: #2563EB;
+
+            color: white;
+        }
+
+        /* BACK BUTTON */
+
+        .back-personal {
+
+            position: absolute;
+
+            top: 25px;
+            left: 25px;
+
+            z-index: 30;
+
+            color: white;
+
+            text-decoration: none;
+
+            background: rgba(0, 0, 0, 0.45);
+
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            font-size: 0.9rem;
+        }
+
+        .back-personal:hover {
+
+            color: white;
+
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        /* TAP AREAS */
+
+        .tap-zone {
+
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+
+            width: 25%;
+
+            z-index: 5;
+        }
+
+        .tap-left {
+            left: 0;
+        }
+
+        .tap-right {
+            right: 0;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 768px) {
+
+            body {
+
+                background: #000;
+
+                overflow: hidden;
+            }
+
+            .story-page {
+
+                padding: 0;
+
+                height: 100dvh;
+
+                min-height: 100dvh;
+
+                overflow: hidden;
+            }
+
+            .story-viewer {
+
+                width: 100%;
+
+                height: 100dvh;
+
+                min-height: 0;
+
+                border-radius: 0;
+
+                background: #000;
+            }
+
+            .story-content {
+
+                display: flex;
+
+                flex-direction: column;
+
+                height: 100%;
+
+                min-height: 0;
+            }
+
+            /* PHOTO */
+
+            .photo-section {
+
+                height: 70%;
+
+                min-height: 0;
+
+                flex-shrink: 0;
+
+                background: #000;
+            }
+
+            .story-photo {
+
+                width: 100%;
+
+                height: 100%;
+
+                object-fit: cover;
+            }
+
+            /* TEXT */
+
+            .text-section {
+
+                height: 30%;
+
+                min-height: 0;
+
+                flex-shrink: 0;
+
+                overflow-y: auto;
+
+                padding: 16px 20px 18px;
+
+                background:
+                    linear-gradient(
+                        to bottom,
+                        #ffffff 0%,
+                        #f8fafc 100%
+                    );
+
+                justify-content: flex-start;
+
+                border-radius: 20px 20px 0 0;
+
+                margin-top: -16px;
+
+                position: relative;
+
+                z-index: 2;
+
+                box-shadow:
+                    0 -10px 30px rgba(0, 0, 0, 0.28);
+
+                scrollbar-width: none;
+            }
+
+            .text-section::-webkit-scrollbar {
+                display: none;
+            }
+
+            .text-section h1 {
+
+                font-size: 1.35rem;
+
+                margin: 6px 0 4px;
+            }
+
+            .day-number {
+
+                font-size: 0.8rem;
+            }
+
+            .date {
+
+                margin-bottom: 8px;
+
+                font-size: 0.82rem;
+            }
+
+            .thought {
+
+                font-size: 0.92rem;
+
+                line-height: 1.4;
+
+                margin-bottom: 5px;
+            }
+
+            .photography-credit {
+
+                font-size: 0.9rem;
+
+                margin-top: 8px;
+
+                margin-bottom: 2px;
+            }
+
+            .location {
+
+                margin-top: 4px;
+
+                font-size: 0.9rem;
+            }
+
+            .day-progress {
+
+                margin-top: 7px;
+
+                font-size: 0.78rem;
+            }
+
+            .navigation {
+
+                display: none;
+            }
+
+            .back-personal {
+
+                top: 14px;
+
+                left: 14px;
+            }
+
+            .photo-counter {
+
+                top: 48px;
+
+                right: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="story-page">
+
+    <div class="story-viewer">
+
+        <a href="index.html" class="back-personal">
+
+            <i class="bi bi-arrow-left"></i>
+            Personal
+
+        </a>
+
+
+        <div
+            class="story-progress"
+            id="storyProgress">
+        </div>
+
+
+        <div class="story-content">
+
+
+            <!-- PHOTO SECTION -->
+
+            <div class="photo-section">
+
+
+                <img
+                    id="storyPhoto"
+                    class="story-photo"
+                    src=""
+                    alt="100 Days Challenge">
+
+
+                <!-- SKIPPED DAY MESSAGE -->
+
+                <div
+                    id="skippedMessage"
+                    class="skipped-message">
+
+                    <div class="skipped-icon">
+                        ⏸
+                    </div>
+
+                    <div class="skipped-title">
+                        Day Skipped
+                    </div>
+
+                    <div class="skipped-subtitle">
+                        No entry for this day
+                    </div>
+
+                </div>
+
+
+                <!-- PHOTO COUNTER -->
+
+                <div
+                    class="photo-counter"
+                    id="photoCounter">
+
+                    1 / 1
+
+                </div>
+
+
+                <!-- TAP AREAS -->
+
+                <div
+                    class="tap-zone tap-left"
+                    onclick="previous()">
+                </div>
+
+                <div
+                    class="tap-zone tap-right"
+                    onclick="next()">
+                </div>
+
+
+            </div>
+
+
+            <!-- TEXT SECTION -->
+
+            <div class="text-section">
+
+
+                <div
+                    class="day-number"
+                    id="dayNumber">
+
+                    DAY 01 / 100
+
+                </div>
+
+
+                <h1 id="dayTitle">
+
+                    The Beginning
+
+                </h1>
+
+
+                <div
+                    class="date"
+                    id="dayDate">
+
+                    26 September 2026
+
+                </div>
+
+
+                <div
+                    class="thought"
+                    id="dayThought">
+
+                    Kahin pahunchne ke liye,
+                    kahin se nikalna bahut zaroori hai.
+
+                </div>
+
+
+                <div
+                    class="photography-credit"
+                    id="photographyCredit">
+
+                    📷 Photography:
+                    Mr. Rakesh, IIT Bhubaneswar
+
+                </div>
+
+
+                <div
+                    class="location"
+                    id="dayLocation">
+
+                    <i class="bi bi-geo-alt-fill"></i>
+
+                    IIT Bhubaneswar
+
+                </div>
+
+
+                <div
+                    class="day-progress"
+                    id="dayProgress">
+
+                    Day 1 of 100
+
+                </div>
+
+
+                <div class="navigation">
+
+
+                    <button
+                        class="nav-button"
+                        onclick="previous()">
+
+                        <i class="bi bi-arrow-left"></i>
+
+                    </button>
+
+
+                    <button
+                        class="nav-button"
+                        onclick="next()">
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   100 DAYS DATA
+========================================= */
+
+
+const days = [
+
+    {
+        day: 1,
+
+        date: "26 September 2026",
+
+        title: "The Beginning",
+
+        photos: [
+            "photos/day1-1.jpg"
+        ],
+
+        thought:
+            "Kahin pahunchne ke liye, kahin se nikalna bahut zaroori hai.",
+
+        photographer:
+            "Mr. Rakesh, IIT Bhubaneswar",
+
+        location:
+            "IIT Bhubaneswar"
+    },
+
+
+    {
+        day: 2,
+
+        date: "27 September 2026",
+
+        title: "A Skipped Day",
+
+        photos: [],
+
+        thought:
+            "Progress isn’t about being perfect; it’s about starting again.",
+
+        photographer:
+            "",
+
+        location:
+            ""
+    },
+
+
+    {
+        day: 3,
+
+        date: "28 September 2026",
+
+        title: "Restart",
+
+        photos: [
+            "photos/day3.jpg"
+        ],
+
+        thought:
+            "Don’t waste more days regretting one skipped day. Take 2–3 minutes to reflect, reset, and restart with higher energy. One missed day doesn’t have to affect the days that follow.",
+
+        photographer:
+            "Mr. Rakesh, IIT Bhubaneswar",
+
+        location:
+            "IIT Bhubaneswar"
+    }
+
+];
+
+
+/* =========================================
+   STATE
+========================================= */
+
+
+let currentDay = 0;
+
+let currentPhoto = 0;
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+
+const photo =
+    document.getElementById("storyPhoto");
+
+const skippedMessage =
+    document.getElementById("skippedMessage");
+
+const dayNumber =
+    document.getElementById("dayNumber");
+
+const dayTitle =
+    document.getElementById("dayTitle");
+
+const dayDate =
+    document.getElementById("dayDate");
+
+const dayThought =
+    document.getElementById("dayThought");
+
+const photographyCredit =
+    document.getElementById("photographyCredit");
+
+const dayLocation =
+    document.getElementById("dayLocation");
+
+const photoCounter =
+    document.getElementById("photoCounter");
+
+const dayProgress =
+    document.getElementById("dayProgress");
+
+const storyProgress =
+    document.getElementById("storyProgress");
+
+
+/* =========================================
+   RENDER
+========================================= */
+
+
+function render(direction = "next") {
+
+
+    const day =
+        days[currentDay];
+
+
+    /*
+       REMOVE PHOTO ANIMATION
+    */
+
+    photo.classList.remove(
+        "slide-next",
+        "slide-prev"
+    );
+
+
+    /*
+       PHOTO OR SKIPPED DAY
+    */
+
+
+    if (day.photos.length === 0) {
+
+
+        /* Hide photo */
+
+        photo.style.display = "none";
+
+
+        /* Show skipped message */
+
+        skippedMessage.style.display = "flex";
+
+
+        /* Counter */
+
+        photoCounter.textContent =
+            "SKIPPED";
+
+
+    } else {
+
+
+        /* Show photo */
+
+        photo.style.display = "block";
+
+
+        /* Hide skipped message */
+
+        skippedMessage.style.display = "none";
+
+
+        /* Set photo */
+
+        photo.src =
+            day.photos[currentPhoto];
+
+
+        /* Animation */
+
+        void photo.offsetWidth;
+
+
+        if (direction === "next") {
+
+            photo.classList.add(
+                "slide-next"
+            );
+
+        } else {
+
+            photo.classList.add(
+                "slide-prev"
+            );
+
+        }
+
+
+        /* Photo counter */
+
+        photoCounter.textContent =
+            `${currentPhoto + 1} / ${day.photos.length}`;
+
+    }
+
+
+    /*
+       DAY INFORMATION
+    */
+
+
+    dayNumber.textContent =
+        `DAY ${String(day.day).padStart(2, "0")} / 100`;
+
+
+    dayTitle.textContent =
+        day.title;
+
+
+    dayDate.textContent =
+        day.date;
+
+
+    dayThought.textContent =
+        day.thought;
+
+
+    /*
+       PHOTOGRAPHY CREDIT
+    */
+
+
+    if (day.photographer) {
+
+        photographyCredit.style.display =
+            "block";
+
+        photographyCredit.textContent =
+            `📷 Photography: ${day.photographer}`;
+
+    } else {
+
+        photographyCredit.style.display =
+            "none";
+
+    }
+
+
+    /*
+       LOCATION
+    */
+
+
+    if (day.location) {
+
+        dayLocation.style.display =
+            "block";
+
+        dayLocation.innerHTML =
+            `<i class="bi bi-geo-alt-fill"></i> ${day.location}`;
+
+    } else {
+
+        dayLocation.style.display =
+            "none";
+
+    }
+
+
+    /*
+       DAY COUNTER
+    */
+
+
+    dayProgress.textContent =
+        `Day ${day.day} of 100`;
+
+
+    /*
+       STORY PROGRESS
+    */
+
+    updateProgress();
+
+}
+
+
+/* =========================================
+   STORY PROGRESS
+========================================= */
+
+
+function updateProgress() {
+
+
+    storyProgress.innerHTML<!DOCTYPE html>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
