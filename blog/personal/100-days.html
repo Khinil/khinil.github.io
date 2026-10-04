@@ -468,7 +468,10 @@
                         id="dayThought"
                         class="thought">
                     </div>
-
+<div
+    id="dayQuote" class="quote-note">
+    
+    </div>
                     <div
                         id="photographyCredit"
                         class="photography-credit">
@@ -603,6 +606,25 @@
 
     location:
         "IIT Bhubaneswar"
+},
+            {
+    day: 5,
+    date: "30 September 2026",
+    title: "A Silent Day",
+
+    photos: [],
+
+    thought:
+        "A busy day. No photo, no big achievement to record. Just work, responsibilities, and a lot going on in the background. Some days are loud with progress; some days are simply about keeping going.",
+
+    quote:
+        "Not every day needs to be remarkable. Some days are simply meant to be lived.",
+
+    photographer:
+        "",
+
+    location:
+        ""
 }
             
         ];
@@ -648,7 +670,8 @@
 
         const storyProgress =
             document.getElementById("storyProgress");
-
+const dayQuote = 
+    document.getElementById("dayQuote");
 
         /* =========================
            RENDER DAY
@@ -686,7 +709,15 @@
                 "Day " +
                 day.day +
                 " of 100";
+dayThought.textContent =
+    day.thought;
 
+dayQuote.textContent = day.quote
+    ? "“" + day.quote + "”"
+    : "";
+
+dayQuote.style.display =
+    day.quote ? "block" : "none";
 
             /* =========================
                PHOTO DAY
