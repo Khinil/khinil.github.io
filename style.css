@@ -826,3 +826,27 @@ box-shadow:0 0 0 rgba(37,99,235,.4);
 animation:pulse 2.8s infinite;
 
 }
+.quote-note {
+    margin-top: 25px;
+    padding: 20px;
+
+    background-color: #f5f1e8;
+
+    background-image:
+        linear-gradient(#d6d0c4 1px, transparent 1px),
+        linear-gradient(90deg, #d6d0c4 1px, transparent 1px);
+
+    background-size: 22px 22px;
+
+    border: 1px solid #c9c1b3;
+
+    color: #222;
+
+    font-family: "Courier New", monospace;
+    font-size: 15px;
+    line-height: 1.6;
+
+    box-shadow: 3px 3px 0 #aaa;
+
+    transform: rotate(-0.5deg);
+}
