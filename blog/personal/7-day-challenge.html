@@ -1,1 +1,448 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7-Day Discipline Challenge</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f5;
+  color: #24332b;
+}
+header {
+  background: #203b30;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+}
+header p { color: #d6e4da; }
+main { max-width: 950px; margin: auto; padding: 20px; }
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px #0000000a;
+}
+h2 { margin-top: 0; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+label {
+  display: block;
+  font-size: 14px;
+  margin: 12px 0 6px;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d3dcd6;
+  border-radius: 8px;
+  font: inherit;
+}
+textarea { min-height: 85px; resize: vertical; }
+button {
+  background: #2c6047;
+  color: white;
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 8px 5px 0 0;
+}
+button.secondary { background: #68776e; }
+.day {
+  border: 1px solid #e0e7e1;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 12px;
+}
+.day img { max-width: 100%; border-radius: 8px; margin-top: 8px; }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.stat {
+  background: #edf3ee;
+  padding: 15px;
+  border-radius: 10px;
+}
+.stat strong { display: block; font-size: 22px; margin-top: 6px; }
+.chart-box { max-width: 400px; margin: 20px auto; }
+small { color: #64736a; }
+footer { text-align: center; padding: 25px; color: #65736a; }
+</style>
+</head>
+
+<body>
+<header>
+  <h1>7-Day Discipline Challenge</h1>
+  <p>Seven days. Small steps. One day at a time.</p>
+  <p>30 October – 5 November 2026</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>My Challenge</h2>
+    <p>Build discipline, independence, focus and consistency.</p>
+    <p>Track my daily photos, sleep, study, time and money honestly.</p>
+    <label for="daySelect">Select Day</label>
+    <select id="daySelect"></select>
+    <div id="dateLabel"></div>
+  </section>
+
+  <section class="card">
+    <h2>Daily Photo & Highlights</h2>
+    <label for="photo">Choose today's photo</label>
+    <input type="file" id="photo" accept="image/*">
+    <div id="photoPreview"></div>
+    <label for="highlights">What happened today?</label>
+    <textarea id="highlights" placeholder="Write your daily highlights..."></textarea>
+  </section>
+
+  <section class="card">
+    <h2>Daily Tracker</h2>
+    <div class="grid">
+      <div>
+        <label for="sleep">Sleep (hours)</label>
+        <input id="sleep" type="number" min="0" max="24" step="0.25" value="8">
+      </div>
+      <div>
+        <label for="study">Study (hours)</label>
+        <input id="study" type="number" min="0" max="24" step="0.25" value="0">
+      </div>
+      <div>
+        <label for="research">Research / Lab (hours)</label>
+        <input id="research" type="number" min="0" max="24" step="0.25" value="0">
+      </div>
+      <div>
+        <label for="exercise">Exercise (hours)</label>
+        <input id="exercise" type="number" min="0" max="24" step="0.25" value="0">
+      </div>
+      <div>
+        <label for="personal">Personal / Free Time (hours)</label>
+        <input id="personal" type="number" min="0" max="24" step="0.25" value="0">
+      </div>
+      <div>
+        <label for="otherTime">Other Activities (hours)</label>
+        <input id="otherTime" type="number" min="0" max="24" step="0.25" value="0">
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Money Tracker (₹)</h2>
+    <div class="grid">
+      <div>
+        <label for="food">Food</label>
+        <input id="food" type="number" min="0" step="1" value="0">
+      </div>
+      <div>
+        <label for="travel">Travel</label>
+        <input id="travel" type="number" min="0" step="1" value="0">
+      </div>
+      <div>
+        <label for="shopping">Shopping</label>
+        <input id="shopping" type="number" min="0" step="1" value="0">
+      </div>
+      <div>
+        <label for="education">Education</label>
+        <input id="education" type="number" min="0" step="1" value="0">
+      </div>
+      <div>
+        <label for="otherMoney">Other Expenses</label>
+        <input id="otherMoney" type="number" min="0" step="1" value="0">
+      </div>
+      <div>
+        <label for="saved">Money Saved</label>
+        <input id="saved" type="number" min="0" step="1" value="0">
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Daily Reflection</h2>
+    <label for="lesson">What did I learn today?</label>
+    <textarea id="lesson"></textarea>
+    <label for="tomorrow">Plan for tomorrow</label>
+    <textarea id="tomorrow"></textarea>
+    <button id="saveBtn">Save Day</button>
+    <button class="secondary" id="exportBtn">Export All Data (JSON)</button>
+    <p><small>Data is saved in this browser on this device. Export regularly as a backup.</small></p>
+  </section>
+
+  <section class="card">
+    <h2>Challenge Dashboard</h2>
+    <div class="stats">
+      <div class="stat">Total Sleep<strong id="totalSleep">0 h</strong></div>
+      <div class="stat">Total Study<strong id="totalStudy">0 h</strong></div>
+      <div class="stat">Total Productive Time<strong id="totalProductive">0 h</strong></div>
+      <div class="stat">Total Expenses<strong id="totalSpent">₹0</strong></div>
+      <div class="stat">Total Saved<strong id="totalSaved">₹0</strong></div>
+      <div class="stat">Days Recorded<strong id="daysRecorded">0 / 7</strong></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Time Distribution</h2>
+    <p><small>Selected day's activities, shown as a share of recorded time.</small></p>
+    <div class="chart-box"><canvas id="timeChart"></canvas></div>
+  </section>
+
+  <section class="card">
+    <h2>Money Distribution</h2>
+    <p><small>Selected day's expenses and savings.</small></p>
+    <div class="chart-box"><canvas id="moneyChart"></canvas></div>
+  </section>
+
+  <section class="card">
+    <h2>My Daily Journal</h2>
+    <div id="journal"></div>
+  </section>
+</main>
+
+<footer>Track honestly. Improve gradually. Never give up.</footer>
+
+<script>
+const keys = [
+  "sleep", "study", "research", "exercise", "personal", "otherTime",
+  "food", "travel", "shopping", "education", "otherMoney", "saved",
+  "highlights", "lesson", "tomorrow"
+];
+
+const dates = Array.from({length: 7}, (_, i) => {
+  const d = new Date(2026, 9, 30 + i);
+  return d.toLocaleDateString("en-GB", {
+    day: "numeric", month: "long", year: "numeric"
+  });
+});
+
+const titles = [
+  "Restart", "Independence", "Focus", "Physical Discipline",
+  "Courage", "Consistency", "Reflection"
+];
+
+const blankDay = () => ({
+  sleep: 8, study: 0, research: 0, exercise: 0, personal: 0,
+  otherTime: 0, food: 0, travel: 0, shopping: 0, education: 0,
+  otherMoney: 0, saved: 0, highlights: "", lesson: "", tomorrow: "",
+  photo: ""
+});
+
+let records = {};
+let selected = 0;
+let timeChart, moneyChart;
+
+try {
+  records = JSON.parse(localStorage.getItem("disciplineChallenge2026") || "{}");
+} catch (e) {
+  records = {};
+}
+
+const daySelect = document.getElementById("daySelect");
+dates.forEach((date, i) => {
+  const option = document.createElement("option");
+  option.value = i;
+  option.textContent = `Day ${i + 1} — ${date}`;
+  daySelect.appendChild(option);
+});
+
+function currentRecord() {
+  if (!records[selected]) records[selected] = blankDay();
+  return records[selected];
+}
+
+function saveRecords() {
+  try {
+    localStorage.setItem("disciplineChallenge2026", JSON.stringify(records));
+  } catch (e) {
+    alert("Browser storage is full. Export your data and use smaller photos.");
+  }
+}
+
+function loadDay() {
+  selected = Number(daySelect.value);
+  const r = currentRecord();
+  document.getElementById("dateLabel").textContent =
+    `${titles[selected]} • ${dates[selected]}`;
+
+  keys.forEach(key => {
+    document.getElementById(key).value = r[key] ?? 0;
+  });
+
+  document.getElementById("photoPreview").innerHTML = "";
+  if (r.photo) {
+    const img = document.createElement("img");
+    img.src = r.photo;
+    img.alt = "Daily photo";
+    img.style.maxWidth = "100%";
+    document.getElementById("photoPreview").appendChild(img);
+  }
+  document.getElementById("photo").value = "";
+  updateCharts();
+  updateDashboard();
+}
+
+function saveDay() {
+  const r = currentRecord();
+  keys.forEach(key => {
+    const el = document.getElementById(key);
+    r[key] = el.type === "number" ? Number(el.value || 0) : el.value;
+  });
+  saveRecords();
+  updateCharts();
+  updateDashboard();
+  renderJournal();
+  alert("Day saved in this browser!");
+}
+
+document.getElementById("photo").addEventListener("change", event => {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (file.size > 1200000) {
+    alert("Please choose a photo under 1.2 MB to avoid filling browser storage.");
+    event.target.value = "";
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    currentRecord().photo = reader.result;
+    document.getElementById("photoPreview").innerHTML = "";
+    const img = document.createElement("img");
+    img.src = reader.result;
+    img.alt = "Daily photo";
+    document.getElementById("photoPreview").appendChild(img);
+    saveRecords();
+    renderJournal();
+  };
+  reader.readAsDataURL(file);
+});
+
+function chartData(r) {
+  return {
+    time: [
+      Number(r.sleep) || 0, Number(r.study) || 0,
+      Number(r.research) || 0, Number(r.exercise) || 0,
+      Number(r.personal) || 0, Number(r.otherTime) || 0
+    ],
+    money: [
+      Number(r.food) || 0, Number(r.travel) || 0,
+      Number(r.shopping) || 0, Number(r.education) || 0,
+      Number(r.otherMoney) || 0, Number(r.saved) || 0
+    ]
+  };
+}
+
+function updateCharts() {
+  const data = chartData(currentRecord());
+  const timeLabels = ["Sleep", "Study", "Research", "Exercise", "Personal", "Other"];
+  const moneyLabels = ["Food", "Travel", "Shopping", "Education", "Other expenses", "Saved"];
+
+  if (timeChart) timeChart.destroy();
+  timeChart = new Chart(document.getElementById("timeChart"), {
+    type: "pie",
+    data: { labels: timeLabels, datasets: [{ data: data.time }] },
+    options: { responsive: true }
+  });
+
+  if (moneyChart) moneyChart.destroy();
+  moneyChart = new Chart(document.getElementById("moneyChart"), {
+    type: "pie",
+    data: { labels: moneyLabels, datasets: [{ data: data.money }] },
+    options: {
+      responsive: true,
+      plugins: { tooltip: { callbacks: {
+        label: context => `${context.label}: ₹${context.raw}`
+      }}}
+    }
+  });
+}
+
+function updateDashboard() {
+  const all = dates.map((_, i) => records[i]).filter(Boolean);
+  const sum = key => all.reduce((total, r) => total + (Number(r[key]) || 0), 0);
+  const expenses = sum("food") + sum("travel") + sum("shopping") +
+                   sum("education") + sum("otherMoney");
+
+  document.getElementById("totalSleep").textContent = sum("sleep") + " h";
+  document.getElementById("totalStudy").textContent = sum("study") + " h";
+  document.getElementById("totalProductive").textContent =
+    (sum("study") + sum("research")) + " h";
+  document.getElementById("totalSpent").textContent = "₹" + expenses;
+  document.getElementById("totalSaved").textContent = "₹" + sum("saved");
+  document.getElementById("daysRecorded").textContent = all.length + " / 7";
+}
+
+function renderJournal() {
+  const journal = document.getElementById("journal");
+  journal.innerHTML = "";
+  dates.forEach((date, i) => {
+    const r = records[i];
+    if (!r) return;
+
+    const card = document.createElement("div");
+    card.className = "day";
+    const heading = document.createElement("h3");
+    heading.textContent = `Day ${i + 1}: ${titles[i]} — ${date}`;
+    card.appendChild(heading);
+
+    if (r.photo) {
+      const img = document.createElement("img");
+      img.src = r.photo;
+      img.alt = "Daily photo";
+      card.appendChild(img);
+    }
+
+    [
+      ["Highlights", r.highlights],
+      ["Lesson", r.lesson],
+      ["Tomorrow", r.tomorrow]
+    ].forEach(([label, value]) => {
+      if (!value) return;
+      const p = document.createElement("p");
+      p.textContent = `${label}: ${value}`;
+      card.appendChild(p);
+    });
+    journal.appendChild(card);
+  });
+}
+
+document.getElementById("saveBtn").addEventListener("click", saveDay);
+daySelect.addEventListener("change", loadDay);
+
+document.getElementById("exportBtn").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(records, null, 2)], {
+    type: "application/json"
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "7-day-discipline-challenge.json";
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+keys.forEach(key => {
+  document.getElementById(key).addEventListener("input", () => {
+    const r = currentRecord();
+    const el = document.getElementById(key);
+    r[key] = el.type === "number" ? Number(el.value || 0) : el.value;
+    updateCharts();
+  });
+});
+
+loadDay();
+renderJournal();
+</script>
+</body>
+</html>
+
